@@ -15,7 +15,7 @@ const { tool } = Astro.props;
 const alternatives = tools.filter(t => tool.top_alternatives.includes(t.id));
 ---
 
-<Layout 
+<Layout
   title={`${tool.name} Pricing Calculator & Hidden Overages Breakdown (2026)`}
   description={`Full 2026 pricing teardown for ${tool.name}. Real costs, free tier limits, hidden fee traps, and cheaper alternatives.`}
 >
@@ -48,21 +48,21 @@ const alternatives = tools.filter(t => tool.top_alternatives.includes(t.id));
         </div>
 
         <div class="flex flex-col sm:flex-row gap-3">
-          <a 
-            href={tool.affiliate_url} 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href={tool.affiliate_url}
+            target="_blank"
+            rel="noopener noreferrer"
             class="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-200 text-xs font-bold border border-slate-700 text-center transition"
           >
             Visit Official Website ↗
           </a>
-          <a 
-            href="https://2683573618956.gumroad.com/l/byryi" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href="/#calculator"
+            target="_blank"
+            rel="noopener noreferrer"
             class="px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black text-xs font-bold text-center shadow-lg shadow-emerald-500/20 transition"
           >
-            Get Stack Cost Audit Kit ⚡️
+            Explore Free Calculator →
           </a>
         </div>
       </div>
@@ -146,7 +146,7 @@ const alternatives = tools.filter(t => tool.top_alternatives.includes(t.id));
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {alternatives.map(alt => (
-            <a 
+            <a
               href={`/compare/${tool.id}-vs-${alt.id}`}
               class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 hover:border-emerald-500/50 transition flex flex-col justify-between group"
             >
