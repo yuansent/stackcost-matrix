@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://stackcost.apexcraftweb.com/sitemap-index.xml
