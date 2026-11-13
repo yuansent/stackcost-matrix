@@ -1,0 +1,170 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import tools from '../../data/tools.json';
+
+export function getStaticPaths() {
+  return tools.map(tool => ({
+    params: { id: tool.id },
+    props: { tool }
+  }));
+}
+
+const { tool } = Astro.props;
+
+// Find direct alternatives
+const alternatives = tools.filter(t => tool.top_alternatives.includes(t.id));
+---
+
+<Layout 
+  title={`${tool.name} Pricing Calculator & Hidden Overages Breakdown (2026)`}
+  description={`Full 2026 pricing teardown for ${tool.name}. Real costs, free tier limits, hidden fee traps, and cheaper alternatives.`}
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Breadcrumbs -->
+    <div class="flex items-center space-x-2 text-xs text-slate-500 mb-6">
+      <a href="/" class="hover:text-slate-300">Home</a>
+      <span>/</span>
+      <span class="text-slate-400">{tool.category_name}</span>
+      <span>/</span>
+      <span class="text-emerald-400 font-semibold">{tool.name}</span>
+    </div>
+
+    <!-- Header Card -->
+    <div class="bg-slate-900 rounded-3xl border border-slate-800 p-8 sm:p-10 mb-8 relative overflow-hidden">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div>
+          <div class="flex items-center space-x-3 mb-2">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">{tool.name}</h1>
+            <span class={`text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md border ${
+              tool.cost_trap_rating === 'Very High' ? 'bg-red-500/10 text-red-400 border-red-500/30' :
+              tool.cost_trap_rating === 'High' ? 'bg-orange-500/10 text-orange-400 border-orange-500/30' :
+              tool.cost_trap_rating === 'Medium' ? 'bg-yellow-500/10 text-yellow-400 border-yellow-500/30' :
+              'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
+            }`}>
+              {tool.cost_trap_rating} Risk
+            </span>
+          </div>
+          <p class="text-slate-400 text-base max-w-2xl">{tool.headline}</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a 
+            href={tool.affiliate_url} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-200 text-xs font-bold border border-slate-700 text-center transition"
+          >
+            Visit Official Website ↗
+          </a>
+          <a 
+            href="https://2683573618956.gumroad.com/l/byryi" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black text-xs font-bold text-center shadow-lg shadow-emerald-500/20 transition"
+          >
+            Get Stack Cost Audit Kit ⚡️
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Stats Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+      <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
+        <span class="text-xs text-slate-500 uppercase tracking-wider font-semibold block mb-1">Starting Price</span>
+        <span class="text-2xl font-black text-white font-mono">{tool.starting_price}</span>
+        <span class="text-xs text-slate-500 block mt-2">{tool.pricing_model}</span>
+      </div>
+
+      <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
+        <span class="text-xs text-slate-500 uppercase tracking-wider font-semibold block mb-1">Free Tier Reality</span>
+        <span class="text-sm font-semibold text-emerald-400 block">{tool.free_tier}</span>
+      </div>
+
+      <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
+        <span class="text-xs text-slate-500 uppercase tracking-wider font-semibold block mb-1">Recommended Best For</span>
+        <span class="text-sm text-slate-300 leading-snug">{tool.best_for}</span>
+      </div>
+    </div>
+
+    <!-- Hidden Traps Deep-Dive (High Value Content) -->
+    <div class="bg-red-950/20 rounded-3xl border border-red-500/30 p-8 mb-10">
+      <div class="flex items-center space-x-3 mb-6">
+        <div class="w-8 h-8 rounded-xl bg-red-500/20 flex items-center justify-center text-red-400 font-bold">⚠️</div>
+        <div>
+          <h2 class="text-xl font-extrabold text-white">Hidden Fees &amp; Overage Traps to Watch Out For</h2>
+          <p class="text-xs text-slate-400">Real situations where founders report unexpected bills from {tool.name}.</p>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        {tool.hidden_costs.map((cost, idx) => (
+          <div class="flex items-start space-x-3 bg-slate-900/80 p-4 rounded-xl border border-red-500/20">
+            <span class="text-xs font-mono font-bold text-red-400 bg-red-500/10 px-2 py-0.5 rounded">0{idx + 1}</span>
+            <p class="text-sm text-slate-300 leading-relaxed">{cost}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Pros & Cons Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      <div class="bg-slate-900/60 rounded-2xl border border-slate-800 p-6">
+        <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wider mb-4 flex items-center space-x-2">
+          <span>✓ Why Founders Choose {tool.name}</span>
+        </h3>
+        <ul class="space-y-2.5 text-xs text-slate-300">
+          {tool.pros.map(pro => (
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span>{pro}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="bg-slate-900/60 rounded-2xl border border-slate-800 p-6">
+        <h3 class="text-sm font-bold text-red-400 uppercase tracking-wider mb-4 flex items-center space-x-2">
+          <span>✕ Real Drawbacks &amp; Limitations</span>
+        </h3>
+        <ul class="space-y-2.5 text-xs text-slate-300">
+          {tool.cons.map(con => (
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400 font-bold">✕</span>
+              <span>{con}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Cheaper Alternatives Section -->
+    {alternatives.length > 0 && (
+      <div class="mt-12">
+        <h2 class="text-2xl font-extrabold text-white tracking-tight mb-2">Compare Cheaper Alternatives to {tool.name}</h2>
+        <p class="text-slate-400 text-sm mb-6">Side-by-side cost comparisons with direct competitors.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {alternatives.map(alt => (
+            <a 
+              href={`/compare/${tool.id}-vs-${alt.id}`}
+              class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 hover:border-emerald-500/50 transition flex flex-col justify-between group"
+            >
+              <div>
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="font-bold text-white group-hover:text-emerald-400 transition">{alt.name}</h4>
+                  <span class="text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded">{alt.starting_price}</span>
+                </div>
+                <p class="text-xs text-slate-400 line-clamp-2">{alt.headline}</p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-emerald-400 font-semibold">
+                <span>View {tool.name} vs {alt.name}</span>
+                <span>→</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</Layout>

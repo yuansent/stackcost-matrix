@@ -1,0 +1,162 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import tools from '../../data/tools.json';
+
+export function getStaticPaths() {
+  const paths = [];
+
+  // Generate pair comparisons within the same category + explicitly listed top alternatives
+  for (let i = 0; i < tools.length; i++) {
+    for (let j = 0; j < tools.length; j++) {
+      if (i === j) continue;
+      const t1 = tools[i];
+      const t2 = tools[j];
+
+      // Compare if in same category or in top_alternatives
+      if (t1.category === t2.category || t1.top_alternatives.includes(t2.id)) {
+        paths.push({
+          params: { slug: `${t1.id}-vs-${t2.id}` },
+          props: { t1, t2 }
+        });
+      }
+    }
+  }
+
+  return paths;
+}
+
+const { t1, t2 } = Astro.props;
+---
+
+<Layout 
+  title={`${t1.name} vs ${t2.name}: Real Pricing & Cost Comparison (2026)`}
+  description={`Compare ${t1.name} vs ${t2.name}. Side-by-side pricing models, hidden fees, overage traps, and which is cheaper for your tech stack.`}
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Breadcrumbs -->
+    <div class="flex items-center space-x-2 text-xs text-slate-500 mb-6">
+      <a href="/" class="hover:text-slate-300">Home</a>
+      <span>/</span>
+      <span class="text-slate-400">Comparisons</span>
+      <span>/</span>
+      <span class="text-emerald-400 font-semibold">{t1.name} vs {t2.name}</span>
+    </div>
+
+    <!-- Header Banner -->
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-400 mb-4">
+        <span>Head-to-Head Pricing Audit</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+        {t1.name} <span class="text-slate-500 font-normal">vs</span> {t2.name}
+      </h1>
+      <p class="mt-4 text-slate-400 text-sm sm:text-base">
+        Which tool offers lower real-world costs and fewer overage traps? Here is the unvarnished 2026 breakdown.
+      </p>
+    </div>
+
+    <!-- Comparison Table / Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+      <!-- Tool 1 Card -->
+      <div class="bg-slate-900/80 rounded-3xl border border-slate-800 p-8 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <h2 class="text-2xl font-bold text-white">{t1.name}</h2>
+            <span class={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${
+              t1.cost_trap_rating === 'Very High' ? 'bg-red-500/10 text-red-400 border-red-500/30' :
+              t1.cost_trap_rating === 'High' ? 'bg-orange-500/10 text-orange-400 border-orange-500/30' :
+              t1.cost_trap_rating === 'Medium' ? 'bg-yellow-500/10 text-yellow-400 border-yellow-500/30' :
+              'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
+            }`}>
+              {t1.cost_trap_rating} Risk
+            </span>
+          </div>
+          <p class="text-xs text-slate-400 mb-6">{t1.headline}</p>
+
+          <div class="space-y-4 text-xs">
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-850">
+              <span class="text-slate-500 block text-[11px] uppercase tracking-wider mb-1">Starting Price</span>
+              <span class="text-lg font-mono font-bold text-white">{t1.starting_price}</span>
+              <span class="text-slate-400 block mt-1">{t1.pricing_model}</span>
+            </div>
+
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-850">
+              <span class="text-slate-500 block text-[11px] uppercase tracking-wider mb-1">Free Tier Allowance</span>
+              <span class="text-emerald-400 font-semibold">{t1.free_tier}</span>
+            </div>
+
+            <div class="bg-red-950/20 p-4 rounded-xl border border-red-500/20">
+              <span class="text-red-400 font-bold block text-[11px] uppercase tracking-wider mb-1">⚠️ Top Trap Risk</span>
+              <span class="text-slate-300 italic">"{t1.hidden_costs[0]}"</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-4 border-t border-slate-800 flex justify-between items-center">
+          <a href={`/tool/${t1.id}`} class="text-xs text-emerald-400 hover:underline font-semibold">View Full {t1.name} Audit →</a>
+          <a href={t1.affiliate_url} target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition">Visit ↗</a>
+        </div>
+      </div>
+
+      <!-- Tool 2 Card -->
+      <div class="bg-slate-900/80 rounded-3xl border border-slate-800 p-8 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <h2 class="text-2xl font-bold text-white">{t2.name}</h2>
+            <span class={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${
+              t2.cost_trap_rating === 'Very High' ? 'bg-red-500/10 text-red-400 border-red-500/30' :
+              t2.cost_trap_rating === 'High' ? 'bg-orange-500/10 text-orange-400 border-orange-500/30' :
+              t2.cost_trap_rating === 'Medium' ? 'bg-yellow-500/10 text-yellow-400 border-yellow-500/30' :
+              'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
+            }`}>
+              {t2.cost_trap_rating} Risk
+            </span>
+          </div>
+          <p class="text-xs text-slate-400 mb-6">{t2.headline}</p>
+
+          <div class="space-y-4 text-xs">
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-850">
+              <span class="text-slate-500 block text-[11px] uppercase tracking-wider mb-1">Starting Price</span>
+              <span class="text-lg font-mono font-bold text-white">{t2.starting_price}</span>
+              <span class="text-slate-400 block mt-1">{t2.pricing_model}</span>
+            </div>
+
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-850">
+              <span class="text-slate-500 block text-[11px] uppercase tracking-wider mb-1">Free Tier Allowance</span>
+              <span class="text-emerald-400 font-semibold">{t2.free_tier}</span>
+            </div>
+
+            <div class="bg-red-950/20 p-4 rounded-xl border border-red-500/20">
+              <span class="text-red-400 font-bold block text-[11px] uppercase tracking-wider mb-1">⚠️ Top Trap Risk</span>
+              <span class="text-slate-300 italic">"{t2.hidden_costs[0]}"</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-4 border-t border-slate-800 flex justify-between items-center">
+          <a href={`/tool/${t2.id}`} class="text-xs text-emerald-400 hover:underline font-semibold">View Full {t2.name} Audit →</a>
+          <a href={t2.affiliate_url} target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition">Visit ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Verdict Banner with CTA -->
+    <div class="bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-900 rounded-3xl border border-emerald-500/30 p-8 text-center sm:text-left sm:flex sm:items-center sm:justify-between gap-6">
+      <div class="max-w-2xl mb-6 sm:mb-0">
+        <h3 class="text-xl font-bold text-white mb-2">Need a tailored budget audit for your exact tech stack?</h3>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          Get the complete 2026 Indie Stack Cost Optimizer kit with dynamic Notion budget dashboards, negotiation email templates, and cloud credit hack guides.
+        </p>
+      </div>
+
+      <a 
+        href="https://2683573618956.gumroad.com/l/byryi" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="inline-block px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black font-bold text-xs shadow-lg shadow-emerald-500/25 transition whitespace-nowrap"
+      >
+        Download Stack Kit ($14.99) ⚡️
+      </a>
+    </div>
+  </div>
+</Layout>

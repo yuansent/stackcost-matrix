@@ -1,0 +1,930 @@
+[
+  {
+    "id": "openai-api",
+    "name": "OpenAI API",
+    "category": "ai-models",
+    "category_name": "AI Models & APIs",
+    "headline": "Industry standard LLMs with tiered TPM/RPM rate limits and per-token pricing",
+    "starting_price": "$0 (Pay-as-you-go)",
+    "pricing_model": "Usage-based (per 1M tokens)",
+    "free_tier": "None for API (Only $5 initial credit for some new accounts, expires in 3 months)",
+    "base_cost_monthly": 20,
+    "hidden_costs": [
+      "Heavy TPM (Tokens Per Minute) tier locks require depositing hundreds of dollars in prepay to upgrade limits",
+      "Batch API is 50% cheaper but has 24h latency SLA",
+      "Fine-tuning storage and hosting fees accumulate automatically"
+    ],
+    "pros": [
+      "Highest intelligence benchmarks",
+      "Vast ecosystem & SDK compatibility",
+      "Structured JSON outputs"
+    ],
+    "cons": [
+      "Expensive reasoning tokens (o1/o3)",
+      "Aggressive rate limits on lower tiers"
+    ],
+    "best_for": "Production apps requiring state-of-the-art multi-step reasoning",
+    "top_alternatives": [
+      "anthropic-api",
+      "deepseek-api",
+      "groq-api"
+    ],
+    "cost_trap_rating": "Medium",
+    "affiliate_url": "https://openai.com"
+  },
+  {
+    "id": "anthropic-api",
+    "name": "Anthropic Claude API",
+    "category": "ai-models",
+    "category_name": "AI Models & APIs",
+    "headline": "Elite coding & long-context frontier models (Claude 3.5 Sonnet / Haiku)",
+    "starting_price": "$0 (Pay-as-you-go)",
+    "pricing_model": "Usage-based (per 1M tokens)",
+    "free_tier": "$5 free credit upon phone verification",
+    "base_cost_monthly": 20,
+    "hidden_costs": [
+      "200K context window gets expensive rapidly if Prompt Caching is not implemented",
+      "Prompt caching requires exact prefix matching and charges 10% premium for writes",
+      "Haiku 3.5 price was increased 4x compared to legacy Haiku 3"
+    ],
+    "pros": [
+      "Unmatched code generation & editing capability",
+      "Massive 200k context window",
+      "90% discount on cached tokens"
+    ],
+    "cons": [
+      "Strict tier graduation requiring high monthly spend",
+      "Occasional capacity overload during peak US hours"
+    ],
+    "best_for": "Software development agents, document parsing, and complex coding workflows",
+    "top_alternatives": [
+      "openai-api",
+      "deepseek-api",
+      "groq-api"
+    ],
+    "cost_trap_rating": "Low",
+    "affiliate_url": "https://anthropic.com"
+  },
+  {
+    "id": "deepseek-api",
+    "name": "DeepSeek API",
+    "category": "ai-models",
+    "category_name": "AI Models & APIs",
+    "headline": "Disruptive open-weights reasoning model at 95% discount vs Western rivals",
+    "starting_price": "$0.14 / 1M tokens",
+    "pricing_model": "Usage-based (Cache Hit: $0.07/M, Output: $2.19/M for R1)",
+    "free_tier": "5M free tokens for new accounts",
+    "base_cost_monthly": 5,
+    "hidden_costs": [
+      "Frequent peak-hour 429 / 503 rate limits due to overwhelming global demand",
+      "Output token generation for R1 deep thinking can be 5x-10x longer than standard LLMs",
+      "Requires third-party fallback (OpenRouter/Groq) for production uptime"
+    ],
+    "pros": [
+      "1/10th to 1/20th the price of OpenAI o1",
+      "Extreme reasoning benchmark scores",
+      "Full OpenAI SDK compatibility"
+    ],
+    "cons": [
+      "API stability can wobble during US trading hours",
+      "Server capacity bottlenecks"
+    ],
+    "best_for": "Budget-conscious solo developers, batch processing, and offline research",
+    "top_alternatives": [
+      "openai-api",
+      "anthropic-api",
+      "groq-api"
+    ],
+    "cost_trap_rating": "Very Low",
+    "affiliate_url": "https://deepseek.com"
+  },
+  {
+    "id": "groq-api",
+    "name": "Groq LPU Inference",
+    "category": "ai-models",
+    "category_name": "AI Models & APIs",
+    "headline": "Ultra-fast hardware inference (500+ tokens/sec) for Llama 3 & open models",
+    "starting_price": "Free tier available / On-demand tokens",
+    "pricing_model": "Usage-based / Enterprise provisioned throughput",
+    "free_tier": "Generous free tier (up to 30 requests/min on Llama 3.3 70B)",
+    "base_cost_monthly": 0,
+    "hidden_costs": [
+      "Free tier is subject to strict daily token ceilings (e.g. 100k-500k tokens/day)",
+      "Paid on-demand tier jumps directly into credit card billing",
+      "Only supports open-source architectures (Llama, Gemma, Mixtral)"
+    ],
+    "pros": [
+      "Instantaneous real-time responses",
+      "Sub-second voice and interactive agent latency",
+      "Compatible with OpenAI client"
+    ],
+    "cons": [
+      "Context limits lower than Claude",
+      "No proprietary frontier models"
+    ],
+    "best_for": "Voice agents, real-time autocomplete, and ultra-low latency bots",
+    "top_alternatives": [
+      "deepseek-api",
+      "openai-api",
+      "together-ai"
+    ],
+    "cost_trap_rating": "Low",
+    "affiliate_url": "https://groq.com"
+  },
+  {
+    "id": "supabase",
+    "name": "Supabase",
+    "category": "database-backend",
+    "category_name": "Database & Cloud Backend",
+    "headline": "Open source Firebase alternative built on dedicated PostgreSQL instances",
+    "starting_price": "$0 / Free tier | $25/mo Pro",
+    "pricing_model": "Monthly tier + Overages (Compute hours + Egress + Storage)",
+    "free_tier": "2 free projects, 500MB database, 1GB storage, 2GB bandwidth (pauses after 7 days of inactivity)",
+    "base_cost_monthly": 25,
+    "hidden_costs": [
+      "Database automatically pauses on Free tier after 1 week without active queries",
+      "Storage egress is $0.09/GB after included 50GB on Pro",
+      "Point-in-time recovery (PITR) requires an extra $100/mo add-on",
+      "Compute instance upgrade starts at $10/mo to $640/mo per project"
+    ],
+    "pros": [
+      "Full native Postgres with pgvector support",
+      "Instant Auth, Realtime, and Edge Functions",
+      "Self-hostable with Docker"
+    ],
+    "cons": [
+      "Multiple projects require separate $25/mo Pro plans",
+      "Egress bills can spike from image hosting"
+    ],
+    "best_for": "Full-stack indie SaaS, AI apps needing vector search, and rapid MVPs",
+    "top_alternatives": [
+      "neon-postgres",
+      "firebase",
+      "railway"
+    ],
+    "cost_trap_rating": "Medium",
+    "affiliate_url": "https://supabase.com"
+  },
+  {
+    "id": "neon-postgres",
+    "name": "Neon Serverless Postgres",
+    "category": "database-backend",
+    "category_name": "Database & Cloud Backend",
+    "headline": "Serverless Postgres with autoscaling, database branching, and zero-scale idle",
+    "starting_price": "$0 / Free | $19/mo Launch",
+    "pricing_model": "Compute unit hours (CU) + Storage GB-months + Written data",
+    "free_tier": "0.5GB data storage, 1 project, 100 CU compute hours/month",
+    "base_cost_monthly": 19,
+    "hidden_costs": [
+      "Cold start latency (~500ms - 1s) when database wakes up from 0 compute units",
+      "Synthetic data writes (logs/migrations) consume monthly written data quotas",
+      "Branching data inherits storage costs if modified heavily"
+    ],
+    "pros": [
+      "Branch database like git branches for preview deployments",
+      "Autoscales compute based on load",
+      "Scales to zero to save idle cost"
+    ],
+    "cons": [
+      "Cold start can annoy users if not using connection pooling",
+      "No built-in Auth (DB only)"
+    ],
+    "best_for": "Serverless Next.js/Vercel apps, multi-tenant databases, staging branches",
+    "top_alternatives": [
+      "supabase",
+      "railway",
+      "planetscale"
+    ],
+    "cost_trap_rating": "Low",
+    "affiliate_url": "https://neon.tech"
+  },
+  {
+    "id": "firebase",
+    "name": "Google Firebase",
+    "category": "database-backend",
+    "category_name": "Database & Cloud Backend",
+    "headline": "Google's NoSQL real-time document database & mobile app backend",
+    "starting_price": "$0 Spark Plan / Pay-as-you-go Blaze Plan",
+    "pricing_model": "Per read, write, and delete operations in Cloud Firestore",
+    "free_tier": "1GB storage, 50k reads/day, 20k writes/day",
+    "base_cost_monthly": 0,
+    "hidden_costs": [
+      "The infamous 'Infinite Loop Read Disaster': an un-memoized React hook can trigger millions of reads and a $1,000+ overnight bill",
+      "Blaze plan has no hard billing spend cap, only alerts",
+      "Complex queries require manual compound indexes or third-party Algolia ($$$)"
+    ],
+    "pros": [
+      "Bulletproof 99.999% uptime backed by Google",
+      "Instant mobile SDKs for iOS/Android",
+      "Zero server maintenance"
+    ],
+    "cons": [
+      "Catastrophic surprise bills from read loops",
+      "Vendor lock-in to Google NoSQL architecture"
+    ],
+    "best_for": "Mobile games, real-time chat apps, and prototypes needing Google auth",
+    "top_alternatives": [
+      "supabase",
+      "convex",
+      "appwrite"
+    ],
+    "cost_trap_rating": "High",
+    "affiliate_url": "https://firebase.google.com"
+  },
+  {
+    "id": "vercel",
+    "name": "Vercel",
+    "category": "hosting-deployment",
+    "category_name": "Hosting & Edge Deployment",
+    "headline": "The premier frontend cloud platform for Next.js and modern web frameworks",
+    "starting_price": "$0 Hobby | $20/user/mo Pro",
+    "pricing_model": "Per seat ($20/mo) + Fast Data Transfer ($0.15/GB) + Fast Compute",
+    "free_tier": "100GB bandwidth, serverless execution limits, strictly non-commercial use only",
+    "base_cost_monthly": 20,
+    "hidden_costs": [
+      "Hobby tier terms officially ban commercial sites (monetized blogs/SaaS)",
+      "Fast Data Transfer overage is $0.15/GB (10x Cloudflare rates)",
+      "Edge Function execution duration overages hit quickly on unoptimized SSR",
+      "Every added GitHub collaborator automatically incurs a $20/mo seat charge"
+    ],
+    "pros": [
+      "Best-in-class Next.js developer experience",
+      "Instant preview branches for PRs",
+      "Global edge caching network"
+    ],
+    "cons": [
+      "High overage prices for bandwidth & functions",
+      "Mandatory seat pricing for teams"
+    ],
+    "best_for": "Next.js frontend applications, venture-backed startups, high-margin SaaS",
+    "top_alternatives": [
+      "cloudflare-pages",
+      "railway",
+      "render"
+    ],
+    "cost_trap_rating": "High",
+    "affiliate_url": "https://vercel.com"
+  },
+  {
+    "id": "cloudflare-pages",
+    "name": "Cloudflare Pages & Workers",
+    "category": "hosting-deployment",
+    "category_name": "Hosting & Edge Deployment",
+    "headline": "Edge computing and global static site hosting with zero egress fees",
+    "starting_price": "$0 Free | $5/mo Workers Paid",
+    "pricing_model": "Requests + CPU time (ZERO egress bandwidth fees)",
+    "free_tier": "Unlimited bandwidth, 500 builds/month, 100k Workers requests/day",
+    "base_cost_monthly": 0,
+    "hidden_costs": [
+      "Edge runtime does not support standard Node.js native binary packages without polyfills",
+      "KV and D1 database operations incur write unit charges on huge traffic spikes",
+      "Build limits on free tier cap at 20 minutes per deployment"
+    ],
+    "pros": [
+      "Zero bandwidth egress fees forever",
+      "Cheapest edge computing on earth ($5/mo for 10M requests)",
+      "Unrivaled DDoS protection"
+    ],
+    "cons": [
+      "Node.js ecosystem compatibility hurdles",
+      "Developer dashboard has steep learning curve"
+    ],
+    "best_for": "pSEO programmatic sites, static sites, high-traffic APIs, and cost-conscious founders",
+    "top_alternatives": [
+      "vercel",
+      "render",
+      "railway"
+    ],
+    "cost_trap_rating": "Very Low",
+    "affiliate_url": "https://pages.cloudflare.com"
+  },
+  {
+    "id": "railway",
+    "name": "Railway",
+    "category": "hosting-deployment",
+    "category_name": "Hosting & Edge Deployment",
+    "headline": "Instant infrastructure platform to deploy full-stack apps, Docker containers, and databases",
+    "starting_price": "$5/mo Hobby | $20/mo Pro + Usage",
+    "pricing_model": "Exact vCPU & RAM usage per minute ($0.000463/GB-hour)",
+    "free_tier": "$5 one-time credit (no permanent free tier)",
+    "base_cost_monthly": 5,
+    "hidden_costs": [
+      "Background worker memory leaks will quietly max out RAM and inflate monthly usage bills",
+      "Outbound network egress is $0.10/GB",
+      "No free tier: trial credit expires and requires adding a credit card"
+    ],
+    "pros": [
+      "Deploy any Dockerfile or GitHub repo in 30 seconds",
+      "One-click templates for Redis, Postgres, n8n",
+      "Transparent per-second resource billing"
+    ],
+    "cons": [
+      "Costs scale linearly with memory/CPU without auto-scale down to zero",
+      "Not ideal for pure static frontends"
+    ],
+    "best_for": "Python backends, Node/Express APIs, background cron workers, and self-hosted tools",
+    "top_alternatives": [
+      "render",
+      "fly-io",
+      "vercel"
+    ],
+    "cost_trap_rating": "Medium",
+    "affiliate_url": "https://railway.com"
+  },
+  {
+    "id": "render",
+    "name": "Render",
+    "category": "hosting-deployment",
+    "category_name": "Hosting & Edge Deployment",
+    "headline": "Modern cloud alternative to Heroku for web apps, background workers, and Postgres",
+    "starting_price": "$0 Free | $7/mo Starter Web Service",
+    "pricing_model": "Fixed monthly instance pricing + Outbound bandwidth overages ($0.10/GB)",
+    "free_tier": "Free web services spin down after 15 minutes of inactivity; free Postgres expires after 30 days",
+    "base_cost_monthly": 7,
+    "hidden_costs": [
+      "Free PostgreSQL database is strictly deleted after 30 days if not upgraded to $7/mo",
+      "Spin-up time for idle free web services takes 50+ seconds",
+      "Static sites are free, but web servers require dedicated $7/mo minimum per instance"
+    ],
+    "pros": [
+      "Predictable flat monthly billing",
+      "Simple Heroku migration path",
+      "Native private networking between services"
+    ],
+    "cons": [
+      "Slow free tier cold starts",
+      "Free database expiration catch"
+    ],
+    "best_for": "Small SaaS backends, Rails/Django apps, and developers wanting fixed monthly budgets",
+    "top_alternatives": [
+      "railway",
+      "fly-io",
+      "digitalocean"
+    ],
+    "cost_trap_rating": "Medium",
+    "affiliate_url": "https://render.com"
+  },
+  {
+    "id": "zapier",
+    "name": "Zapier",
+    "category": "automation-workflow",
+    "category_name": "Automation & Workflow",
+    "headline": "The market leader in no-code app integrations with 7,000+ supported apps",
+    "starting_price": "$0 Free (100 tasks/mo) | $29.99/mo Starter (750 tasks/mo)",
+    "pricing_model": "Tiered task count (billed annually or 33% monthly premium)",
+    "free_tier": "100 tasks/month, 5 single-step Zaps only",
+    "base_cost_monthly": 30,
+    "hidden_costs": [
+      "Every single step in a multi-step Zap consumes 1 task (a 5-step automation with 200 runs consumes 1,000 tasks and triggers high overage fees)",
+      "Webhooks and filtering require paid plans",
+      "Monthly billing has a heavy 33% markup over advertised annual price",
+      "Auto-replay on failed tasks requires higher tier plans"
+    ],
+    "pros": [
+      "Massive ecosystem: connects to virtually every business tool on earth",
+      "Extremely polished and reliable trigger system",
+      "No-code AI actions"
+    ],
+    "cons": [
+      "Extremely expensive at scale ($300+/mo for modest volumes)",
+      "Multi-step task multiplier burns credits fast"
+    ],
+    "best_for": "Non-technical founders, sales operations, and connecting obscure CRM tools",
+    "top_alternatives": [
+      "make",
+      "n8n",
+      "relay"
+    ],
+    "cost_trap_rating": "Very High",
+    "affiliate_url": "https://zapier.com"
+  },
+  {
+    "id": "make",
+    "name": "Make (Integromat)",
+    "category": "automation-workflow",
+    "category_name": "Automation & Workflow",
+    "headline": "Visual automation platform with drag-and-drop data manipulation at 1/5th Zapier's price",
+    "starting_price": "$0 Free (1,000 ops/mo) | $9/mo Core (10,000 ops/mo)",
+    "pricing_model": "Operations volume (1 operation = 1 module execution)",
+    "free_tier": "1,000 operations/month, 2 active scenarios",
+    "base_cost_monthly": 9,
+    "hidden_costs": [
+      "Data iteration loops (e.g. processing 100 rows in a sheet) execute 100 individual operations in seconds",
+      "High frequency polling intervals require Pro plans",
+      "Large file transfers can trigger execution payload limits"
+    ],
+    "pros": [
+      "Visual flow-chart builder with advanced router branching",
+      "10,000 operations for $9 vs Zapier's 750 tasks for $30",
+      "Deep JSON manipulation & array aggregators"
+    ],
+    "cons": [
+      "Steeper learning curve than Zapier",
+      "Debugging complex errors can take time"
+    ],
+    "best_for": "Agencies, power users, growth hackers, and complex data pipeline automations",
+    "top_alternatives": [
+      "zapier",
+      "n8n",
+      "activepieces"
+    ],
+    "cost_trap_rating": "Low",
+    "affiliate_url": "https://make.com"
+  },
+  {
+    "id": "n8n",
+    "name": "n8n (Self-Hosted & Cloud)",
+    "category": "automation-workflow",
+    "category_name": "Automation & Workflow",
+    "headline": "Fair-code workflow automation tool with unlimited self-hosted executions",
+    "starting_price": "$0 Self-hosted (Community) | €20/mo Cloud (2,500 executions)",
+    "pricing_model": "Execution-based on Cloud / $0 for infinite runs when self-hosted via Docker",
+    "free_tier": "Self-hosted Community Edition is 100% free with unlimited workflows and executions",
+    "base_cost_monthly": 0,
+    "hidden_costs": [
+      "Self-hosting requires maintaining a $5/mo VPS (Railway/Hetzner) and configuring SSL/backups",
+      "Community edition restricts enterprise user roles and multi-tenancy",
+      "Cloud plan counts entire workflow executions, but charges overage per extra execution"
+    ],
+    "pros": [
+      "Unlimited automations for $0 when hosted on a cheap server",
+      "Native AI Agent nodes with LangChain integrations",
+      "Write raw JavaScript or Python anywhere"
+    ],
+    "cons": [
+      "Self-hosting maintenance & update responsibilities",
+      "Cloud tier is slightly pricey compared to Make"
+    ],
+    "best_for": "Developers, technical founders, and privacy-first teams with millions of automations",
+    "top_alternatives": [
+      "make",
+      "zapier",
+      "activepieces"
+    ],
+    "cost_trap_rating": "Very Low",
+    "affiliate_url": "https://n8n.io"
+  },
+  {
+    "id": "notion",
+    "name": "Notion",
+    "category": "productivity-knowledge",
+    "category_name": "Productivity & Knowledge",
+    "headline": "All-in-one connected workspace for notes, docs, project management, and AI",
+    "starting_price": "$0 Free | $10/user/mo Plus",
+    "pricing_model": "Per user / per month (billed annually, or $12/mo monthly)",
+    "free_tier": "Unlimited blocks for individuals, 5MB file upload limit, up to 10 guest collaborators",
+    "base_cost_monthly": 10,
+    "hidden_costs": [
+      "Notion AI is NOT included in Plus plans: costs an additional $8-$10/user/month",
+      "Adding a full workspace member immediately triggers a monthly seat invoice",
+      "File uploads capped at 5MB on free tier"
+    ],
+    "pros": [
+      "Incredible relational databases and customizable views",
+      "Vast template ecosystem & API integrations",
+      "Generous free tier for solo creators"
+    ],
+    "cons": [
+      "Seat fees multiply quickly for growing teams",
+      "Can feel sluggish on huge databases"
+    ],
+    "best_for": "Solo creators, early startups, company wikis, and project management",
+    "top_alternatives": [
+      "coda",
+      "obsidian",
+      "airtable"
+    ],
+    "cost_trap_rating": "Medium",
+    "affiliate_url": "https://notion.so"
+  },
+  {
+    "id": "airtable",
+    "name": "Airtable",
+    "category": "productivity-knowledge",
+    "category_name": "Productivity & Knowledge",
+    "headline": "Relational database disguised as a collaborative spreadsheet for business operations",
+    "starting_price": "$0 Free | $20/seat/mo Team (Annual) or $24/mo monthly",
+    "pricing_model": "Per seat / per month + Record count limits per base",
+    "free_tier": "1,000 records per base, 1GB attachments, up to 5 editors",
+    "base_cost_monthly": 24,
+    "hidden_costs": [
+      "Strict record limits: hitting 1,000 records on free forces an upgrade to $24/user/mo",
+      "Every person who edits a base requires a paid seat (no cheap viewer-editor distinction)",
+      "Syncing tables between bases consumes sync quotas"
+    ],
+    "pros": [
+      "World-class interface designer for internal business apps",
+      "Robust automation triggers and scripts",
+      "Extremely enterprise-friendly"
+    ],
+    "cons": [
+      "Brutally expensive seat fees for small teams",
+      "Hard record count ceilings"
+    ],
+    "best_for": "Internal operations, agency client portals, content production pipelines",
+    "top_alternatives": [
+      "notion",
+      "baserow",
+      "nocodb"
+    ],
+    "cost_trap_rating": "High",
+    "affiliate_url": "https://airtable.com"
+  },
+  {
+    "id": "perplexity-pro",
+    "name": "Perplexity AI",
+    "category": "ai-models",
+    "category_name": "AI Models & APIs",
+    "headline": "Conversational conversational answer engine replacing Google Search with live citations",
+    "starting_price": "$0 Free | $20/mo Pro",
+    "pricing_model": "Flat monthly subscription / API token usage",
+    "free_tier": "Unlimited standard queries, 5 Pro searches per day",
+    "base_cost_monthly": 20,
+    "hidden_costs": [
+      "API pricing for sonar models charges for both token count and search request frequency",
+      "Pro search rate limit during peak global breaking-news cycles",
+      "Third-party model switching (Claude 3.5 Sonnet) subject to internal token throttles"
+    ],
+    "pros": [
+      "Saves 2+ hours daily compared to traditional web search",
+      "Multi-model switching (Claude, GPT-4o, Sonar)",
+      "Upload and search local PDF files seamlessly"
+    ],
+    "cons": [
+      "Enterprise team seats require higher tiers",
+      "Occasionally hallucinates on niche technical code"
+    ],
+    "best_for": "Founders, researchers, investors, and content creators needing instant verified facts",
+    "top_alternatives": [
+      "openai-api",
+      "anthropic-api",
+      "claude-pro"
+    ],
+    "cost_trap_rating": "Low",
+    "affiliate_url": "https://perplexity.ai"
+  },
+  {
+    "id": "cursor-ai",
+    "name": "Cursor AI Editor",
+    "category": "ai-models",
+    "category_name": "AI Models & APIs",
+    "headline": "AI-first fork of VS Code with deep codebase indexing and multi-file composer",
+    "starting_price": "$0 Free (2-week trial) | $20/mo Pro",
+    "pricing_model": "Monthly subscription (500 fast premium requests/mo + unlimited slow)",
+    "free_tier": "14-day Pro trial, then 50 slow requests/month",
+    "base_cost_monthly": 20,
+    "hidden_costs": [
+      "Fast request limit: 500 fast requests burns out in ~10 days of heavy coding",
+      "Overages after 500 requests cost $0.10/request or waiting in slow queue",
+      "Custom API keys bypass 500 limit but pay full Anthropic API rates directly"
+    ],
+    "pros": [
+      "Codebase-wide semantic indexing and `@Codebase` context",
+      "Composer mode generates full features across multiple files",
+      "Zero-friction migration from VS Code extensions"
+    ],
+    "cons": [
+      "Can burn through 500 fast requests quickly on large refactors",
+      "Occasional cloud sync stalls"
+    ],
+    "best_for": "Full-stack engineers, solo developers, and fast-moving startup teams",
+    "top_alternatives": [
+      "github-copilot",
+      "windsurf-codeium",
+      "continue-dev"
+    ],
+    "cost_trap_rating": "Medium",
+    "affiliate_url": "https://cursor.com"
+  },
+  {
+    "id": "github-copilot",
+    "name": "GitHub Copilot",
+    "category": "ai-models",
+    "category_name": "AI Models & APIs",
+    "headline": "The world's most widely deployed AI developer tool directly inside your IDE",
+    "starting_price": "$0 Free (limited) | $10/mo Individual | $19/user/mo Business",
+    "pricing_model": "Fixed monthly or annual seat billing",
+    "free_tier": "2,000 code completions and 50 chat requests per month",
+    "base_cost_monthly": 10,
+    "hidden_costs": [
+      "Workspace-wide refactoring and deep multi-file editing is limited compared to Cursor",
+      "Business tier requires organization-wide GitHub Enterprise billing management",
+      "Copilot Workspace features locked behind waitlists or higher plans"
+    ],
+    "pros": [
+      "Predictable flat $10/mo with zero unexpected overages",
+      "Supported officially in VS Code, JetBrains, Neovim",
+      "Backed by GitHub Enterprise privacy guarantees"
+    ],
+    "cons": [
+      "Context awareness is shallower than Cursor",
+      "Less aggressive at full-project scaffolding"
+    ],
+    "best_for": "Corporate developers, security-conscious teams, and cost-predictable workflows",
+    "top_alternatives": [
+      "cursor-ai",
+      "windsurf-codeium",
+      "supermaven"
+    ],
+    "cost_trap_rating": "Very Low",
+    "affiliate_url": "https://github.com/features/copilot"
+  },
+  {
+    "id": "fly-io",
+    "name": "Fly.io",
+    "category": "hosting-deployment",
+    "category_name": "Hosting & Edge Deployment",
+    "headline": "Run full-stack apps and Docker containers globally close to your users",
+    "starting_price": "$0 Free Allowance | Pay-as-you-go from $1.94/mo per VM",
+    "pricing_model": "Micro-VM compute seconds + Persistent Volume Storage + Outbound data",
+    "free_tier": "Free allowance covers small shared-cpu VMs (up to 3 shared-cpu-1x 256MB VMs)",
+    "base_cost_monthly": 5,
+    "hidden_costs": [
+      "Requires credit card entry to activate account even for free allowance",
+      "Persistent volumes cannot be easily resized downward without migration",
+      "Dedicated IPv4 addresses cost $2/mo extra (IPv6 is free)"
+    ],
+    "pros": [
+      "Run apps physically close to users in 30+ edge regions",
+      "Deploy any Docker container seamlessly",
+      "True scale-to-zero capability with fast resume"
+    ],
+    "cons": [
+      "CLI-centric workflow without a beginner-friendly GUI",
+      "Storage volume management requires terminal skill"
+    ],
+    "best_for": "Elixir/Phoenix apps, SQLite on the edge, low-latency WebSocket backends",
+    "top_alternatives": [
+      "railway",
+      "render",
+      "digitalocean"
+    ],
+    "cost_trap_rating": "Low",
+    "affiliate_url": "https://fly.io"
+  },
+  {
+    "id": "digitalocean",
+    "name": "DigitalOcean App Platform & Droplets",
+    "category": "hosting-deployment",
+    "category_name": "Hosting & Edge Deployment",
+    "headline": "Simple cloud infrastructure and managed Kubernetes for growing developers",
+    "starting_price": "$4/mo Droplet | $5/mo Basic App Platform",
+    "pricing_model": "Fixed monthly tier per Droplet/Container + Bandwidth overages ($0.01/GB)",
+    "free_tier": "3 free static sites hosted on App Platform forever; $200 60-day credit for new users",
+    "base_cost_monthly": 6,
+    "hidden_costs": [
+      "Bandwidth overage is cheap ($0.01/GB) but begins billing immediately if pooling threshold is breached",
+      "Managed databases start at $15/mo (far higher than basic $4 droplets)",
+      "Automatic weekly backup snapshots add 20% to droplet costs"
+    ],
+    "pros": [
+      "Extremely predictable fixed monthly billing",
+      "Vast library of community tutorials and guides",
+      "Free static site hosting with SSL"
+    ],
+    "cons": [
+      "Manual server maintenance required for plain Droplets",
+      "App Platform cold build times can lag"
+    ],
+    "best_for": "Self-hosting WordPress, n8n, Docker setups, and developers wanting fixed bills",
+    "top_alternatives": [
+      "railway",
+      "render",
+      "linode-akamai"
+    ],
+    "cost_trap_rating": "Very Low",
+    "affiliate_url": "https://digitalocean.com"
+  },
+  {
+    "id": "posthog",
+    "name": "PostHog",
+    "category": "analytics-monitoring",
+    "category_name": "Analytics & Product Intelligence",
+    "headline": "The all-in-one product analytics suite with session replay, feature flags, and A/B tests",
+    "starting_price": "$0 Free Tier | Pay-as-you-go based on event volume",
+    "pricing_model": "Generous free volume tier + Decaying unit cost per million events",
+    "free_tier": "1,000,000 events/month, 5,000 session recordings/month, unlimited feature flags",
+    "base_cost_monthly": 0,
+    "hidden_costs": [
+      "Session recording overages: exceeding 5,000 recordings can ramp up bills if sample rate isn't set",
+      "Billing alerts must be configured manually to prevent spikes from DDoS traffic tracking",
+      "Self-hosted version is no longer officially supported for new open-source installs"
+    ],
+    "pros": [
+      "Best free tier in the analytics industry (1M free events every month)",
+      "Replaces Mixpanel, Hotjar, and LaunchDarkly simultaneously",
+      "Built-in reverse proxy keeps ad-blockers from blocking analytics"
+    ],
+    "cons": [
+      "Dashboard can feel overwhelming due to sheer feature count",
+      "Session recording network payload"
+    ],
+    "best_for": "Indie SaaS founders, growth teams, and product managers wanting full visibility",
+    "top_alternatives": [
+      "google-analytics",
+      "plausible",
+      "mixpanel"
+    ],
+    "cost_trap_rating": "Low",
+    "affiliate_url": "https://posthog.com"
+  },
+  {
+    "id": "plausible",
+    "name": "Plausible Analytics",
+    "category": "analytics-monitoring",
+    "category_name": "Analytics & Product Intelligence",
+    "headline": "Lightweight, open-source and privacy-friendly Google Analytics alternative",
+    "starting_price": "$9/mo Growth (10k pageviews) | Self-hosted Community ($0)",
+    "pricing_model": "Monthly pageview tiers (annual discount available)",
+    "free_tier": "30-day free trial (no permanent free cloud tier)",
+    "base_cost_monthly": 9,
+    "hidden_costs": [
+      "Going viral on Hacker News/Twitter can bump pageviews into a higher $19-$49/mo bracket",
+      "No free cloud tier after the 30-day trial expires",
+      "Advanced event funnels requires configuring custom properties"
+    ],
+    "pros": [
+      "Under 1KB tracking script (zero website slowdown)",
+      "100% GDPR, CCPA, and PECR compliant with no cookie banners needed",
+      "Ultra-clean single-page dashboard"
+    ],
+    "cons": [
+      "No session replay or heatmaps",
+      "Monthly subscription required for cloud hosting"
+    ],
+    "best_for": "Privacy-conscious blogs, pSEO sites, portfolio projects, and lean startups",
+    "top_alternatives": [
+      "posthog",
+      "umami",
+      "fathom"
+    ],
+    "cost_trap_rating": "Very Low",
+    "affiliate_url": "https://plausible.io"
+  },
+  {
+    "id": "resend",
+    "name": "Resend",
+    "category": "email-marketing",
+    "category_name": "Email & Transactional",
+    "headline": "Modern transactional email API built for developers with React Email templates",
+    "starting_price": "$0 Free (3,000 emails/mo) | $20/mo Pro (50,000 emails/mo)",
+    "pricing_model": "Monthly email volume tier + Dedicated IP add-on ($30/mo)",
+    "free_tier": "3,000 emails/month, 100 emails/day limit, 1 sending domain",
+    "base_cost_monthly": 0,
+    "hidden_costs": [
+      "Free tier enforces a hard 100 emails/day cap (stops bulk onboarding bursts)",
+      "Adding more than 1 domain requires upgrading to the $20/mo Pro tier",
+      "Dedicated IP for high deliverability costs an extra $30/month"
+    ],
+    "pros": [
+      "Design email templates directly using React & Tailwind (`react-email`)",
+      "Sub-100ms API response time",
+      "Cleanest developer dashboard in the email industry"
+    ],
+    "cons": [
+      "100 emails/day free cap is tight for sudden traffic",
+      "Marketing broadcast features are still evolving"
+    ],
+    "best_for": "Next.js applications, indie founders sending transactional receipts & magic links",
+    "top_alternatives": [
+      "postmark",
+      "sendgrid",
+      "aws-ses"
+    ],
+    "cost_trap_rating": "Low",
+    "affiliate_url": "https://resend.com"
+  },
+  {
+    "id": "postmark",
+    "name": "Postmark",
+    "category": "email-marketing",
+    "category_name": "Email & Transactional",
+    "headline": "Legendary email service provider with the industry's highest transactional deliverability",
+    "starting_price": "$15/mo (10,000 emails/mo) + $1.80 per extra 1k",
+    "pricing_model": "Predictable monthly volume + Automatic pooled overage pricing",
+    "free_tier": "100 test emails forever (strictly for developer staging)",
+    "base_cost_monthly": 15,
+    "hidden_costs": [
+      "Strict manual vetting process: new accounts undergo manual domain and compliance review",
+      "Separates transactional streams from broadcast marketing streams strictly to preserve reputation",
+      "No free production tier"
+    ],
+    "pros": [
+      "Fastest inbox delivery speeds in the world (consistently <5 seconds)",
+      "Detailed 45-day searchable email event logs",
+      "Unrivaled sender IP reputation"
+    ],
+    "cons": [
+      "More expensive per email than AWS SES or Resend",
+      "Strict account approval gating"
+    ],
+    "best_for": "Mission-critical password resets, billing invoices, and financial SaaS applications",
+    "top_alternatives": [
+      "resend",
+      "aws-ses",
+      "mailgun"
+    ],
+    "cost_trap_rating": "Low",
+    "affiliate_url": "https://postmarkapp.com"
+  },
+  {
+    "id": "stripe",
+    "name": "Stripe",
+    "category": "payments-monetization",
+    "category_name": "Payments & Billing",
+    "headline": "The global standard infrastructure for internet commerce, billing, and payouts",
+    "starting_price": "2.9% + $0.30 per successful card charge",
+    "pricing_model": "Per-transaction percentage + Fixed flat fee",
+    "free_tier": "No monthly setup or maintenance fees; only pay when you make sales",
+    "base_cost_monthly": 0,
+    "hidden_costs": [
+      "International cards incur an extra +1.5% fee + 1% currency conversion fee",
+      "Stripe Billing (recurring subscription automation) charges an extra 0.5% - 0.8% on recurring volume",
+      "Stripe Tax automatically charges 0.5% per transaction if turned on",
+      "Dispute chargeback fee is $15 per lost chargeback"
+    ],
+    "pros": [
+      "Works in 46+ countries with local payment methods (Apple Pay, SEPA, iDEAL)",
+      "Stripe Checkout and Customer Portal require zero backend coding",
+      "Unmatched developer documentation and SDKs"
+    ],
+    "cons": [
+      "Fees accumulate silently with Tax + Billing + International add-ons (can reach 5%-6%)",
+      "Can freeze accounts under high chargeback ratios"
+    ],
+    "best_for": "Any online business, SaaS subscription, or e-commerce store with registered legal entity",
+    "top_alternatives": [
+      "gumroad",
+      "lemon-squeezy",
+      "paddle"
+    ],
+    "cost_trap_rating": "Medium",
+    "affiliate_url": "https://stripe.com"
+  },
+  {
+    "id": "lemon-squeezy",
+    "name": "Lemon Squeezy (Merchant of Record)",
+    "category": "payments-monetization",
+    "category_name": "Payments & Billing",
+    "headline": "All-in-one payment processing that acts as your Merchant of Record, handling global taxes",
+    "starting_price": "5% + $0.50 per transaction",
+    "pricing_model": "Per-transaction fee (Includes global sales tax & EU VAT compliance)",
+    "free_tier": "No monthly fee, pay only upon making sales",
+    "base_cost_monthly": 0,
+    "hidden_costs": [
+      "5% + $0.50 is significantly higher than direct Stripe (2.9% + $0.30) on low-ticket items",
+      "Payout fee: international PayPal/Wise payouts incur small transfer fees",
+      "Acquired by Stripe in 2024; roadmap merging underway"
+    ],
+    "pros": [
+      "Acts as Merchant of Record: handles global EU VAT, GST, and US Sales Tax filing automatically",
+      "No need to register tax entities across multiple countries",
+      "Clean customer portal and license key generator"
+    ],
+    "cons": [
+      "Higher per-sale take rate",
+      "Undergoing integration shifts post-Stripe acquisition"
+    ],
+    "best_for": "Indie digital creators, software license sellers, and solo SaaS founders without accountants",
+    "top_alternatives": [
+      "gumroad",
+      "paddle",
+      "stripe"
+    ],
+    "cost_trap_rating": "Low",
+    "affiliate_url": "https://lemonsqueezy.com"
+  },
+  {
+    "id": "gumroad",
+    "name": "Gumroad",
+    "category": "payments-monetization",
+    "category_name": "Payments & Billing",
+    "headline": "The simplest platform for creators and developers to sell digital products & kits online",
+    "starting_price": "10% flat fee per sale + payment processing fees",
+    "pricing_model": "Flat 10% fee + Credit card/PayPal processing fee (~2.9% - 3.4% + $0.30)",
+    "free_tier": "Free to list unlimited products, zero monthly subscription fees",
+    "base_cost_monthly": 0,
+    "hidden_costs": [
+      "Total take rate reaches approximately 13% - 15% once credit card processing is included",
+      "Payout schedule: weekly payouts have rolling security reserves for new accounts",
+      "Custom CSS customization is minimal compared to self-hosted checkouts"
+    ],
+    "pros": [
+      "Absolute fastest zero-code setup in the world (live in 5 minutes)",
+      "Handles global EU VAT & tax compliance cleanly",
+      "Built-in affiliate system, discount codes, and customer email blasts"
+    ],
+    "cons": [
+      "10% platform fee is high for large revenue volumes ($10k+/mo)",
+      "Branded Gumroad checkout overlay"
+    ],
+    "best_for": "Selling PDFs, Notion templates, code boilerplates, checklists, and digital kits",
+    "top_alternatives": [
+      "lemon-squeezy",
+      "stripe",
+      "whop"
+    ],
+    "cost_trap_rating": "Medium",
+    "affiliate_url": "https://gumroad.com"
+  }
+]
