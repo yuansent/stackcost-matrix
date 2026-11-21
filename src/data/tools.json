@@ -926,5 +926,41 @@
     ],
     "cost_trap_rating": "Medium",
     "affiliate_url": "https://gumroad.com"
+  },
+  {
+    "id": "google-gemini-api",
+    "name": "Google Gemini API",
+    "category": "ai-models",
+    "category_name": "AI Models & APIs",
+    "headline": "Frontier multimodal LLMs whose launch rates were intro prices — flagship and Flash rates double on fixed dates (Dec 1, 2026 / Jan 1, 2027)",
+    "starting_price": "$0.75 / 1M tokens (Flash, until Dec 31, 2026)",
+    "pricing_model": "Usage-based (per 1M tokens; thinking tokens billed at output rates)",
+    "free_tier": "Flash models have a rate-limited free tier; Gemini 4 Argon / Carbon have NO free tier",
+    "base_cost_monthly": 20,
+    "hidden_costs": [
+      "Intro-price expiry: Gemini 4 Argon input/output double on Dec 1, 2026 ($2 to $4 input, $10 to $20 output per 1M); Gemini 3.8 / 3.6 Flash double on Jan 1, 2027 ($0.75 to $1.50, $3.75 to $7.50) — budgets set at launch rates silently double",
+      "Thinking tokens are billed at the full output rate, so long reasoning chains inflate the most expensive line item",
+      "Gemini 2.5 Pro is deprecated: from Dec 1, 2026 requests auto-route to 3.8 Flash at Flash prices, which then double on Jan 1, 2027",
+      "Batch, Flex and Priority tiers and cached-input prices all double on the same dates — there is no cheaper tier to escape into",
+      "Explicit cache storage is billed per 1M tokens per hour ($0.50 to $1.00 on Flash from Jan 1, 2027), a line item most cost estimates omit"
+    ],
+    "pros": [
+      "Flash models have a genuine free tier for prototyping",
+      "Batch API is 50% cheaper for async workloads",
+      "Strong multimodal (text / image / video / audio) input in one API"
+    ],
+    "cons": [
+      "Flagship Argon / Carbon models have no free tier at all",
+      "Published rates are time-limited intro prices with hard doubling dates",
+      "Grounding with Google Search costs $14 per 1,000 requests after the free monthly allowance"
+    ],
+    "best_for": "Multimodal apps and cost-sensitive Flash workloads — if the budget is re-based before the Dec 1 / Jan 1 doubling dates",
+    "top_alternatives": [
+      "anthropic-api",
+      "openai-api",
+      "deepseek-api"
+    ],
+    "cost_trap_rating": "High",
+    "affiliate_url": "https://ai.google.dev"
   }
 ]
