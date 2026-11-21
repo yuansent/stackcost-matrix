@@ -51,6 +51,36 @@ const categories = Array.from(new Set(tools.map(t => t.category))).map(catKey =>
     </div>
   </section>
 
+  <!-- Partner Picks (affiliate) -->
+  <section class="py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap items-center gap-2 mb-4">
+      <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">Partner Picks</span>
+      <span class="text-[11px] text-slate-500">Tools from our index with partner links — we may earn a commission at no extra cost to you.</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div class="bg-slate-900/60 rounded-2xl border border-slate-800 hover:border-emerald-500/50 p-6 transition flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-lg text-white">Make — Automation Without the Zapier Tax</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mt-2">Visual automation at roughly 1/5th of Zapier's price. Our teardown breaks down where Make stays cheap — and where the costs hide.</p>
+        </div>
+        <div class="mt-5 flex items-center gap-4 text-xs font-semibold">
+          <a href="https://www.make.com/en/register?pc=stackcost" target="_blank" rel="sponsored noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black font-bold transition">Try Make Free →</a>
+          <a href="/tool/make/" class="text-emerald-400 hover:text-emerald-300">Read the pricing audit</a>
+        </div>
+      </div>
+      <div class="bg-slate-900/60 rounded-2xl border border-slate-800 hover:border-emerald-500/50 p-6 transition flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-lg text-white">Railway — Deploy Apps &amp; Databases in Minutes</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mt-2">Instant infrastructure for full-stack apps, Docker containers, and databases. Sign up through our partner link and get $20 in free credits.</p>
+        </div>
+        <div class="mt-5 flex items-center gap-4 text-xs font-semibold">
+          <a href="https://railway.com?referralCode=zO7FcI" target="_blank" rel="sponsored noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black font-bold transition">Try Railway — $20 Credits →</a>
+          <a href="/tool/railway/" class="text-emerald-400 hover:text-emerald-300">Read the pricing audit</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Interactive 30-Second Stack Cost Calculator -->
   <section id="calculator" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="bg-gradient-to-b from-slate-900 to-slate-900/40 rounded-3xl border border-slate-800 p-6 sm:p-10 shadow-2xl relative overflow-hidden">
