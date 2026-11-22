@@ -962,5 +962,37 @@
     ],
     "cost_trap_rating": "High",
     "affiliate_url": "https://ai.google.dev"
+  },
+  {
+    "id": "harvest",
+    "name": "Harvest",
+    "category": "productivity-knowledge",
+    "category_name": "Productivity & Knowledge",
+    "headline": "Time tracking whose $9/seat sticker is only the floor — a second, unpublished usage meter decides the real bill at renewal",
+    "starting_price": "$9/seat/mo Teams (billed annually) | $14/seat/mo Enterprise (billed annually)",
+    "pricing_model": "Per-seat + usage-based (active projects, clients, tasks and invoices billed on top; unit rates not published)",
+    "free_tier": "1 seat, 2 projects",
+    "base_cost_monthly": 9,
+    "hidden_costs": [
+      "The $9/seat headline is a floor, not the bill: a second meter charges for active projects, clients, tasks and invoices on top of seats — the bill grows when your client list grows, even if your team does not",
+      "Usage unit rates are published nowhere on the pricing page: on the stacked (Flex) model you cannot compute your total price before the invoice arrives",
+      "New accounts are billed seats-only until the SECOND paid renewal, so the first invoice looks deceptively cheap; legacy accounts were switched to the two-layer model at renewal — BBC documented one firm's bill jumping $130 to $2,110/month",
+      "Checkout after the trial pre-selects the Enterprise tier on annual billing — doing nothing lands you on $14/seat, not the $9 Teams tier",
+      "Forecast (scheduling) is a separate product at $5/person/month and is not included in any Harvest plan"
+    ],
+    "pros": [
+      "Mature, polished time tracking with strong invoicing and 50+ integrations (QuickBooks, Xero, Stripe, Slack)",
+      "Seat prices themselves are mid-market ($9-$14) and the free tier genuinely works for solo use",
+      "Profitability reporting and timesheet approvals on Enterprise for firms that need them"
+    ],
+    "cons": [
+      "Total cost is unknowable in advance — the usage layer has no published price list",
+      "Renewal bills documented at roughly 6-15x the previous amount after the Bending Spoons acquisition",
+      "No automatic time capture — timers are manual, unlike automatic-capture rivals"
+    ],
+    "best_for": "Firms that need profitability reporting and approvals AND can absorb an unpredictable usage bill — everyone else should price Clockify or TimeCamp first",
+    "top_alternatives": [],
+    "cost_trap_rating": "Very High",
+    "affiliate_url": "https://www.getharvest.com"
   }
 ]
