@@ -994,5 +994,80 @@
     "top_alternatives": [],
     "cost_trap_rating": "Very High",
     "affiliate_url": "https://www.getharvest.com"
+  },
+  {
+    "id": "activecampaign",
+    "name": "ActiveCampaign",
+    "category": "email-marketing",
+    "category_name": "Email & Transactional",
+    "headline": "Email marketing whose $19 sticker covers 1,000 contacts and 1 seat — contacts, sends, extra seats, CRM, SMS and WhatsApp each bill on separate meters",
+    "starting_price": "$19/mo Starter (1,000 contacts, monthly billing)",
+    "pricing_model": "Per-contact tiered + send-volume meter + paid add-ons",
+    "free_tier": "None — no free plan; 1,000-contact minimum purchase",
+    "base_cost_monthly": 19,
+    "hidden_costs": [
+      "Contact tiers jump in steps, not linearly: Plus goes from $239/mo at 10,000 contacts to $329/mo at 15,000 (+38%), and Pro from $259 at 5,000 to $469 at 10,000 (+81%) — budget for the next tier, not the current one",
+      "Sends are a second meter: plans include 10x-15x your contact count in monthly sends, and the official catalog prices extra send blocks separately (about $1 per 1,000 sends, $0.005/send beyond blocks) — how the included allowance nets against purchased blocks is not spelled out on the pricing page",
+      "Seats are scarce and pricey: Plus includes just 1 seat (first extra seat $15/mo) and Enterprise includes 5 (extra seats from $40/mo); Starter caps at 2 seats total, so a third teammate forces an upgrade",
+      "The 'platform' is sold in pieces: the sales CRM (Pipelines) is an add-on with a base fee plus per-seat fees (B2B on Enterprise: $199/mo + $79/seat/mo); WhatsApp, SMS, transactional email and custom reports ($159/mo) are all separate line items",
+      "Annual billing saves 17-21% but prepays the whole year at your signing tier — if your list outgrows the tier mid-year, you still owe the difference"
+    ],
+    "pros": [
+      "Deepest marketing automation in its class — branching workflows, predictive sending and lead scoring on mid tiers",
+      "Full price ladder is verifiable: the complete catalog, every tier and add-on, is published through the pricing page's own data feed",
+      "Scales to 100,000 contacts on self-serve plans without a sales call"
+    ],
+    "cons": [
+      "No free plan and a 1,000-contact minimum — a 50-contact list pays the same as a 1,000-contact list",
+      "True cost is a stack of meters and add-ons; a full-channel setup can exceed 2x the headline tier price",
+      "Send-volume overage netting is not documented on the pricing page — you find out from the invoice"
+    ],
+    "best_for": "Marketing teams with 1,000-25,000 contacts who live in automation workflows and can budget by contact tier",
+    "top_alternatives": [
+      "postmark",
+      "resend"
+    ],
+    "cost_trap_rating": "High",
+    "affiliate_url": "https://www.activecampaign.com"
+  },
+  {
+    "id": "mixpanel",
+    "name": "Mixpanel",
+    "category": "analytics-monitoring",
+    "category_name": "Analytics & Product Intelligence",
+    "headline": "First 1M events free, then per-event billing on every tracked event across all projects — a 5M-event product pays $438-$613/mo, and monthly billing costs 40% more than annual",
+    "starting_price": "$0 (first 1M events/mo free) | then $0.00028/event",
+    "pricing_model": "per-event usage-based",
+    "free_tier": "1M events/month, 10K session replays/month, 1K experiment MEU/month, unlimited seats",
+    "base_cost_monthly": 0,
+    "hidden_costs": [
+      "Every tracked event counts, across all projects combined: at 5M events/mo the bill is $613/mo on monthly billing ($438/mo annual) — instrumentation sprawl and autocapture inflate the meter, not your user count",
+      "Monthly billing costs exactly 40% more than annual at every volume tier (20M events/mo: $2,289/mo vs $1,635/mo — a $7,848/yr difference for the same usage)",
+      "Growth hard-caps at 20M events/month; beyond that, pricing switches to custom Enterprise contracts with no published rates",
+      "Session Replay is a second meter: 20K sessions/mo included on Growth, expandable to 500K — the add-on price is not published",
+      "Experiments are a third meter: 5K MEU/mo included on Growth, expandable to 100K MEU — price not published; the feature-flag ceiling (50, or 500) is tied to MEU purchases",
+      "Group Analytics (paid plans) and Metric Trees (Enterprise) are paid add-ons with no published price; anomaly detection and root-cause analysis are Enterprise-only"
+    ],
+    "pros": [
+      "Full price ladder is published with worked examples at 13 volume tiers, for both billing modes",
+      "Unlimited seats on every plan, including Free — no per-seat charges at all",
+      "Generous free tier: 1M events/mo, 10K replays, unlimited seats",
+      "Real volume discounts: the effective per-event rate roughly halves between 1.5M and 20M events/mo",
+      "No overage penalties — extra events bill at the same per-event basis"
+    ],
+    "cons": [
+      "The bill scales with how much you instrument, not with users or revenue — event sprawl is a cost bug",
+      "Monthly billing carries a flat 40% premium over annual at every tier",
+      "Three separate meters (events, replays, MEU); two of them have unpublished add-on prices",
+      "Hard cliff at 20M events/mo into opaque custom Enterprise pricing",
+      "Free plan cannot save cohorts or metrics, and replay retention is only 30 days below Enterprise"
+    ],
+    "best_for": "Product teams under 20M monthly events who govern event tracking tightly and can pay annually",
+    "top_alternatives": [
+      "posthog",
+      "plausible"
+    ],
+    "cost_trap_rating": "High",
+    "affiliate_url": ""
   }
 ]
