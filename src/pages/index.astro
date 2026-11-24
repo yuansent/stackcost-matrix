@@ -81,6 +81,18 @@ const categories = Array.from(new Set(tools.map(t => t.category))).map(catKey =>
     </div>
   </section>
 
+  <!-- Price Alerts (new product) -->
+  <section class="pb-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-gradient-to-r from-emerald-500/15 via-slate-900 to-cyan-500/10 rounded-2xl border border-emerald-500/30 p-6 sm:p-8 flex flex-col md:flex-row md:items-center gap-6 justify-between">
+      <div>
+        <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">New · Price Alerts</span>
+        <h3 class="font-bold text-xl text-white mt-3">SaaS prices change quietly. Your bill shouldn't find out first.</h3>
+        <p class="text-sm text-slate-400 leading-relaxed mt-2 max-w-2xl">We monitor the official pricing pages of all 33 tools in our index. Gemini API prices just doubled, Jira Cloud went up 7.2%, and Harvest renewals jumped 600%+. Get the free monthly roundup before your next renewal surprises you.</p>
+      </div>
+      <a href="/alerts/" class="shrink-0 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black text-sm font-bold shadow-md shadow-emerald-500/20 transition text-center">Get Price Alerts →</a>
+    </div>
+  </section>
+
   <!-- Interactive 30-Second Stack Cost Calculator -->
   <section id="calculator" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="bg-gradient-to-b from-slate-900 to-slate-900/40 rounded-3xl border border-slate-800 p-6 sm:p-10 shadow-2xl relative overflow-hidden">

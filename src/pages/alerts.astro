@@ -1,0 +1,175 @@
+---
+import Layout from '../layouts/Layout.astro';
+import tools from '../data/tools.json';
+---
+
+<Layout title="SaaS Price Change Alerts" description="We monitor the official pricing pages of 33 developer tools and email you when prices change — verified before/after numbers with official sources. Free monthly roundup; instant alerts coming with Pro.">
+  <!-- Hero -->
+  <section class="relative overflow-hidden pt-16 pb-16 border-b border-slate-800/60 bg-gradient-to-b from-slate-900/50 via-slate-950 to-slate-950">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-6">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>New — StackCost Price Alerts</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+        SaaS prices change quietly.<br />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">Your invoice shouldn't be how you find out.</span>
+      </h1>
+      <p class="mt-6 text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        We watch the official pricing pages of all {tools.length} tools in the StackCost index. When a vendor raises prices, tightens a free tier, or adds a new billing layer, you get an email with the before/after numbers and the official source — before your next renewal, not after.
+      </p>
+      <div class="mt-8">
+        <a href="#subscribe" class="inline-block px-8 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black font-bold text-sm shadow-lg shadow-emerald-500/25 transition">Get the Free Monthly Roundup →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proof: already caught -->
+  <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-10">
+      <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">Already Caught</span>
+      <h2 class="text-3xl font-extrabold text-white tracking-tight mt-4">Real price changes our monitoring has already caught</h2>
+      <p class="text-slate-400 text-sm mt-2 leading-relaxed">Every alert we send meets the same bar as our teardowns: it really changed, it has an exact effective date, it comes from an official source, and the math is shown.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-slate-900/60 rounded-2xl border border-slate-800 hover:border-emerald-500/50 p-6 transition flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-bold text-lg text-white">Google Gemini API</h3>
+            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border bg-red-500/10 text-red-400 border-red-500/30">Prices Doubled</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">Gemini 4 Argon input <span class="text-slate-200 font-semibold">$2.00 → $4.00</span> and output <span class="text-slate-200 font-semibold">$10.00 → $20.00</span> per 1M tokens; Flash input <span class="text-slate-200 font-semibold">$0.75 → $1.50</span>. Announced ahead of time — subscribers get weeks to react, re-route traffic, or renegotiate.</p>
+        </div>
+        <div class="mt-5 pt-4 border-t border-slate-800/80 text-[11px] text-slate-500 space-y-1">
+          <p>Effective: <span class="text-slate-300 font-medium">Dec 1, 2026</span> (Argon) · <span class="text-slate-300 font-medium">Jan 1, 2027</span> (Flash)</p>
+          <p>Source: <a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300">Google official pricing page</a></p>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/60 rounded-2xl border border-slate-800 hover:border-emerald-500/50 p-6 transition flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-bold text-lg text-white">Harvest</h3>
+            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border bg-red-500/10 text-red-400 border-red-500/30">Renewal Shock</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">Harvest switched renewals to a two-tier billing model in 2026, and users reported increases of <span class="text-slate-200 font-semibold">600%–1,500%+</span> — discovered only when the renewal invoice landed. Current list prices: Teams $9/$11, Enterprise $14/$17.50 per user/mo.</p>
+        </div>
+        <div class="mt-5 pt-4 border-t border-slate-800/80 text-[11px] text-slate-500 space-y-1">
+          <p>Effective: <span class="text-slate-300 font-medium">2026 renewal cycle</span> (Jul–Aug 2026)</p>
+          <p>Source: <a href="https://www.getharvest.com/pricing" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300">Harvest official pricing page</a> · BBC, Aug 20, 2026</p>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/60 rounded-2xl border border-slate-800 hover:border-emerald-500/50 p-6 transition flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-bold text-lg text-white">Atlassian Jira Cloud</h3>
+            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border bg-orange-500/10 text-orange-400 border-orange-500/30">+7.2%</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">Jira Cloud Standard (monthly, first tier) went <span class="text-slate-200 font-semibold">$9.05 → $9.70</span> per user/mo and Premium <span class="text-slate-200 font-semibold">$18.30 → $19.60</span>; a 100-seat annual Standard plan rose <span class="text-slate-200 font-semibold">$9,050 → $9,700</span>. Small percentage, real money at seat scale.</p>
+        </div>
+        <div class="mt-5 pt-4 border-t border-slate-800/80 text-[11px] text-slate-500 space-y-1">
+          <p>Effective: <span class="text-slate-300 font-medium">Oct 13, 2026</span></p>
+          <p>Source: <a href="https://www.atlassian.com/licensing/future-pricing/cloud/list/pricing-tables" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300">Atlassian Cloud Pricing Tables</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coverage -->
+  <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+    <div class="max-w-3xl mb-8">
+      <h2 class="text-3xl font-extrabold text-white tracking-tight">Coverage: all {tools.length} tools in the index</h2>
+      <p class="text-slate-400 text-sm mt-2 leading-relaxed">If it's in the StackCost index, its official pricing page is on our watchlist. Every new teardown we publish joins the watchlist automatically.</p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      {tools.map(tool => (
+        <a href={`/tool/${tool.id}`} class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-xs font-medium hover:border-emerald-500/50 hover:text-emerald-300 transition">{tool.name}</a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Tiers -->
+  <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+    <div class="max-w-3xl mb-10">
+      <h2 class="text-3xl font-extrabold text-white tracking-tight">Free vs Pro</h2>
+      <p class="text-slate-400 text-sm mt-2 leading-relaxed">We're validating the free list first. Pro billing opens only after the list proves itself — joining free today makes you a founding member with first access when Pro launches.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+      <div class="bg-slate-900/60 rounded-2xl border border-slate-800 p-6 sm:p-8 flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-xl text-white">Free</h3>
+          <p class="mt-2"><span class="text-3xl font-extrabold text-white">$0</span> <span class="text-slate-400 text-sm">/ forever</span></p>
+          <ul class="mt-6 space-y-2.5 text-sm text-slate-300">
+            <li>✓ Monthly price-change roundup email</li>
+            <li>✓ Every verified change across all {tools.length} watched tools</li>
+            <li>✓ Before/after numbers with official source links</li>
+            <li>✓ One-click unsubscribe, no spam, ever</li>
+          </ul>
+        </div>
+        <a href="#subscribe" class="mt-8 block text-center px-6 py-3 rounded-xl bg-slate-900 border border-slate-700 hover:border-emerald-500/60 text-slate-100 font-bold text-sm transition">Join Free</a>
+      </div>
+      <div class="bg-slate-900/60 rounded-2xl border border-emerald-500/40 p-6 sm:p-8 flex flex-col justify-between relative">
+        <span class="absolute -top-3 left-6 text-[10px] font-bold uppercase tracking-wider text-black bg-gradient-to-r from-emerald-400 to-teal-400 px-2 py-0.5 rounded">Coming Soon</span>
+        <div>
+          <h3 class="font-bold text-xl text-white">Pro</h3>
+          <p class="mt-2"><span class="text-3xl font-extrabold text-white">$6</span> <span class="text-slate-400 text-sm">/ month (suggested launch price)</span></p>
+          <ul class="mt-6 space-y-2.5 text-sm text-slate-300">
+            <li>✓ Instant alerts — within 24 hours of a verified change</li>
+            <li>✓ Watch only the tools you actually use</li>
+            <li>✓ Bill-impact estimate for your team size</li>
+            <li>✓ Migration &amp; alternative picks from our teardowns</li>
+            <li>✓ Everything in Free</li>
+          </ul>
+        </div>
+        <p class="mt-8 text-center text-xs text-slate-500 leading-relaxed">Pro is not on sale yet. Join the free list and you'll be first in line when it opens.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscribe -->
+  <section id="subscribe" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+    <div class="max-w-2xl mx-auto bg-gradient-to-b from-slate-900 to-slate-900/40 rounded-3xl border border-slate-800 p-6 sm:p-10 text-center shadow-2xl">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Get the free monthly roundup</h2>
+      <p class="text-slate-400 text-sm mt-3 leading-relaxed">One email a month. Every verified price change across {tools.length} developer tools, with the numbers and the sources. No noise — if nothing changed, the roundup says so.</p>
+
+      <!-- EMAIL CAPTURE: replace this placeholder block with the live Kit form embed ("StackCost Price Alerts") once connected. -->
+      <div class="mt-8">
+        <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="return false;">
+          <input type="email" required placeholder="you@company.com" disabled class="flex-1 bg-slate-950 border border-slate-800 text-slate-400 rounded-xl px-4 py-3 text-sm focus:outline-none opacity-70" />
+          <button type="submit" disabled class="px-6 py-3 rounded-xl bg-slate-800 text-slate-400 font-bold text-sm cursor-not-allowed">Notify Me</button>
+        </form>
+        <p class="mt-4 text-xs font-semibold text-amber-400">Signup is being connected right now — the form opens shortly. Check back in a day or two.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+    <h2 class="text-3xl font-extrabold text-white tracking-tight mb-8">FAQ</h2>
+    <div class="space-y-4">
+      <div class="bg-slate-900/60 rounded-2xl border border-slate-800 p-6">
+        <h3 class="font-bold text-white text-sm">Where does the pricing data come from?</h3>
+        <p class="text-xs text-slate-400 leading-relaxed mt-2">Only official vendor pricing pages. Every alert links to the source and shows the before/after numbers, and a human verifies each change before it is sent — no scraped rumors, no unverified screenshots.</p>
+      </div>
+      <div class="bg-slate-900/60 rounded-2xl border border-slate-800 p-6">
+        <h3 class="font-bold text-white text-sm">How often will I hear from you?</h3>
+        <p class="text-xs text-slate-400 leading-relaxed mt-2">Free members get one roundup email per month covering every verified change. Pro members (coming soon) get an instant alert within 24 hours of a verified change to a tool they watch. That's it — we don't send anything else.</p>
+      </div>
+      <div class="bg-slate-900/60 rounded-2xl border border-slate-800 p-6">
+        <h3 class="font-bold text-white text-sm">Which tools are covered?</h3>
+        <p class="text-xs text-slate-400 leading-relaxed mt-2">All {tools.length} tools in the StackCost index — AI APIs, databases, hosting, automation, analytics, and payments. The full list is above, and every new teardown we publish is added to the watchlist.</p>
+      </div>
+      <div class="bg-slate-900/60 rounded-2xl border border-slate-800 p-6">
+        <h3 class="font-bold text-white text-sm">When does Pro open, and what will it cost?</h3>
+        <p class="text-xs text-slate-400 leading-relaxed mt-2">Pro opens after the free list is validated. The suggested launch price is $6/month; the final price will be confirmed at launch, and free members will hear about it first. No payments are taken today.</p>
+      </div>
+      <div class="bg-slate-900/60 rounded-2xl border border-slate-800 p-6">
+        <h3 class="font-bold text-white text-sm">How do I unsubscribe?</h3>
+        <p class="text-xs text-slate-400 leading-relaxed mt-2">One click — every email carries an unsubscribe link, and it takes effect immediately. No retention flows, no dark patterns.</p>
+      </div>
+    </div>
+  </section>
+</Layout>
