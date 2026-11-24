@@ -1069,5 +1069,43 @@
     ],
     "cost_trap_rating": "High",
     "affiliate_url": ""
+  },
+  {
+    "id": "mailchimp",
+    "name": "Mailchimp",
+    "category": "email-marketing",
+    "category_name": "Email & Transactional",
+    "headline": "The $13 start is real — but overages auto-bill, credits expire, and the 15% promo ends after 12 months",
+    "starting_price": "$13/mo Essentials (500 contacts, monthly billing)",
+    "pricing_model": "Per-contact tiered + automatic overages + expiring credits",
+    "free_tier": "250 contacts, 500 sends/mo (max 250/day), 1 seat, 1 audience; sending pauses when limits are hit",
+    "base_cost_monthly": 13,
+    "hidden_costs": [
+      "Tiers jump in steps, not linearly: Essentials goes $13 (500 contacts) to $75 (5,000) to $385 (50,000); Standard $20 to $100 to $450; Premium is flat $350 up to 10,000 contacts, then $620 at 25,000 and $815 at 50,000 — all verified 2026-11-24 on mailchimp.com",
+      "Overages auto-bill and tiers auto-upgrade: paid plans keep sending past the contact or send limit and charge overages automatically; Mailchimp may move you to a higher contact tier when it is cheaper — the bill moves without your confirmation (pricing page FAQ)",
+      "The month-13 promo cliff: the 15% discount applies only to 10,000+ contact accounts for the first 12 months; from month 13 the price jumps about 17.6% (Standard at 10,000 contacts: $114.75 promo to $135 regular)",
+      "Every credit expires: SMS credits expire monthly, transactional email blocks do not roll over, and Pay As You Go credits expire after 12 months with no refund",
+      "Premium is an entry jump, not a next tier: Standard starts at $20/mo but Premium starts at $350/mo for a 10,000-contact configuration — 17.5x the starting price for phone support, multivariate testing and unlimited seats",
+      "No annual discount for small accounts: annual billing is only available on Premium and Standard plans with 10,000+ contacts, and only via sales — accounts with 500-5,000 contacts pay full monthly price"
+    ],
+    "pros": [
+      "Free plan with 250 contacts and 500 sends/mo — the friendliest entry in the category",
+      "Anchor prices are verifiable: starting and ceiling prices for all three paid plans are published on the pricing page, and the full 500-50,000 contact ladder was read live on 2026-11-24",
+      "14-day free trial on Essentials and Standard; 15% nonprofit discount",
+      "Transactional email is priced in published blocks ($20 per 25,000-email block at low volume, down to $10 per block at high volume)"
+    ],
+    "cons": [
+      "Intermediate contact-tier prices load dynamically through the pricing API and are not in the static page",
+      "Overage unit prices are not published on the pricing page",
+      "SMS credit prices vary by calculator and are not published as a rate card",
+      "The billable-contact definition lives in help docs, not on the pricing page — check before importing a list"
+    ],
+    "best_for": "Small teams under 10,000 contacts who want a free start and can watch the auto-overage and credit-expiry rules",
+    "top_alternatives": [
+      "activecampaign",
+      "postmark"
+    ],
+    "cost_trap_rating": "High",
+    "affiliate_url": "https://mailchimp.com"
   }
 ]
