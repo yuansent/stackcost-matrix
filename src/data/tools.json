@@ -1107,5 +1107,42 @@
     ],
     "cost_trap_rating": "High",
     "affiliate_url": "https://mailchimp.com"
+  },
+  {
+    "id": "jira",
+    "name": "Jira (Atlassian)",
+    "category": "productivity-knowledge",
+    "category_name": "Productivity & Knowledge",
+    "headline": "The $8.48 headline is a 300-seat blended average — small teams pay $9.70, and from Dec 3 AI and automation bill by the meter",
+    "starting_price": "$9.70/user/mo Standard (1-100 users, monthly billing)",
+    "pricing_model": "Per-seat tiered (progressive) + usage-based overages from Dec 3, 2026",
+    "free_tier": "Up to 10 users, 2 GB storage, 150 automation steps per site/month, 0 Rovo AI credits",
+    "base_cost_monthly": 9.7,
+    "hidden_costs": [
+      "The pricing page headline is a blended average, not your price: the default view shows Standard $8.48 and Premium $15.56 per user/month, a weighted average for a 300-user team. Teams of 1-100 users actually pay $9.70 (Standard) and $19.60 (Premium) on monthly billing, per Atlassian's official pricing tables effective Oct 13, 2026",
+      "Seats rose on Oct 13, 2026 and usage billing starts Dec 3, 2026: Standard's first tier went $9.05 to $9.70 (+7.2%) and Premium $18.30 to $19.60. From Dec 3, Rovo AI credits and automation steps beyond the included allowance are billed per use — and pay-as-you-go is on by default (Atlassian usage FAQ), so overages land on the next bill unless an admin turns them off or sets a cap",
+      "Rovo credits burn fast: a basic chat or agent request costs about 10 credits, and heavier agents cost more. Standard includes only 25 credits per user/month, pooled org-wide — a 10-user team shares 250 credits, roughly 25 basic AI requests a month. Overage runs $0.01 per credit ($10 per 1,000 credits)",
+      "Automation steps count executions, not successful runs: every trigger, condition, action, branch and loop iteration counts, including failed and empty runs. Allowances are 150 steps per site/month on Free, then 400 (Standard), 750 (Premium) and 1,000 (Enterprise) per user/month; overage is $0.50 per 1,000 steps. The old Enterprise 'unlimited automation' no longer exists",
+      "Annual billing sells fixed user tiers: the 10-user Standard tier is $950/year (about 18% cheaper than paying monthly), but adding one user past a tier jumps the whole bill to the next tier price"
+    ],
+    "pros": [
+      "Full official price tables are published: every monthly and annual tier for Standard and Premium is on Atlassian's pricing-tables page, so the numbers are verifiable without a sales call",
+      "Progressive per-user pricing means large teams pay much less per seat (Standard drops to $5.80/user/month at 2,501-5,000 users)",
+      "Usage allowances are pooled at organization level, admins get 80% and 100% usage notifications, and pay-as-you-go can be disabled or capped monthly",
+      "Free plan for up to 10 users with no time limit"
+    ],
+    "cons": [
+      "The pricing page's default numbers are blended averages for a 300-user team — small teams must open the pricing tables to find their real per-seat price",
+      "Usage overage rates are not printed in the support docs; the per-credit and per-step rates live in Atlassian's usage rate card and calculator",
+      "Confluence runs on the same seat-plus-usage model but its per-tier prices are a separate table — budgeting Jira alone understates a Jira + Confluence stack",
+      "Enterprise pricing is annual-only and quote-based (the pricing calculator shows it from 801 users)"
+    ],
+    "best_for": "Teams already standardized on Jira who can assign an admin to cap Rovo and automation usage before Dec 3, 2026",
+    "top_alternatives": [
+      "notion",
+      "airtable"
+    ],
+    "cost_trap_rating": "High",
+    "affiliate_url": "https://www.atlassian.com/software/jira"
   }
 ]
