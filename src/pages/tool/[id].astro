@@ -57,12 +57,10 @@ const alternatives = tools.filter(t => tool.top_alternatives.includes(t.id));
             Visit Official Website ↗
           </a>
           <a
-            href="/#calculator"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`/calculator/?category=${tool.category}`}
             class="px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black text-xs font-bold text-center shadow-lg shadow-emerald-500/20 transition"
           >
-            Explore Free Calculator →
+            Calculate your team cost →
           </a>
         </div>
       </div>

@@ -1,0 +1,344 @@
+---
+import Layout from '../layouts/Layout.astro';
+import calc from '../data/calculator.json';
+
+const tools = calc.tools;
+const categories = Array.from(new Set(tools.map(t => t.category))).map(key => ({
+  key,
+  name: tools.find(t => t.category === key).category_name,
+  count: tools.filter(t => t.category === key).length,
+}));
+const trapOrder = { 'Very Low': 1, 'Low': 2, 'Medium': 3, 'High': 4, 'Very High': 5 };
+---
+
+<Layout
+  title="Team Cost Estimator — Real Monthly Cost of 34 Dev Tools"
+  description="Estimate your team's real monthly bill for 34 developer tools: exact per-seat math where prices are published, honest ranges where they are not. No invented numbers."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden pt-16 pb-12 border-b border-slate-800/60 bg-gradient-to-b from-slate-900/50 via-slate-950 to-slate-950">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-6">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>New — StackCost Team Cost Estimator</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+        What does your stack <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">really cost</span> per month?
+      </h1>
+      <p class="mt-6 text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        Pick your team size. We do the seat math from the vendors' own published prices — and where a vendor hides the real number behind usage meters or unpublished tiers, we say so instead of inventing one.
+      </p>
+    </div>
+  </section>
+
+  <!-- Controls -->
+  <section class="py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-slate-900/60 rounded-3xl border border-slate-800 p-6 sm:p-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Team size -->
+        <div>
+          <label for="team-slider" class="text-xs text-slate-500 uppercase tracking-wider font-semibold block mb-2">Team size</label>
+          <div class="flex items-center gap-4">
+            <input id="team-slider" type="range" min="1" max="50" step="1" value="10" class="flex-1 accent-emerald-500" />
+            <span id="team-display" class="text-2xl font-black text-white font-mono w-24 text-right">10 people</span>
+          </div>
+          <div class="flex gap-2 mt-4">
+            {[5, 10, 25, 50].map(n => (
+              <button data-team={n} class="team-preset px-4 py-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-xs font-bold hover:border-emerald-500/60 hover:text-emerald-300 transition">{n} people</button>
+            ))}
+          </div>
+          <p class="text-[11px] text-slate-500 mt-3 leading-relaxed">Seat prices are per user. Free tiers are applied where they are real: Jira is free up to 10 users, Harvest's first seat is free.</p>
+        </div>
+
+        <!-- Billing + filters -->
+        <div class="space-y-4">
+          <div>
+            <span class="text-xs text-slate-500 uppercase tracking-wider font-semibold block mb-2">Billing</span>
+            <div class="inline-flex rounded-xl border border-slate-800 overflow-hidden">
+              <button id="billing-annual" class="billing-btn px-5 py-2.5 text-xs font-bold bg-emerald-500 text-black">Annual (cheaper)</button>
+              <button id="billing-monthly" class="billing-btn px-5 py-2.5 text-xs font-bold bg-slate-900 text-slate-300">Monthly</button>
+            </div>
+            <span id="billing-note" class="text-[11px] text-slate-500 ml-3">Annual prices shown where the vendor publishes them.</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="category-select" class="text-xs text-slate-500 uppercase tracking-wider font-semibold block mb-2">Category</label>
+              <select id="category-select" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-slate-200 focus:border-emerald-500 outline-none">
+                <option value="all">All categories ({tools.length} tools)</option>
+                {categories.map(c => (
+                  <option value={c.key}>{c.name} ({c.count})</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label for="sort-select" class="text-xs text-slate-500 uppercase tracking-wider font-semibold block mb-2">Sort by</label>
+              <select id="sort-select" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-slate-200 focus:border-emerald-500 outline-none">
+                <option value="total">Monthly total (low to high)</option>
+                <option value="perseat">Cost per seat (low to high)</option>
+                <option value="trap">Trap risk (highest first)</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="contacts-select" class="text-xs text-slate-500 uppercase tracking-wider font-semibold block mb-2">Email list size <span class="text-slate-600 normal-case">(drives Mailchimp — verified contact tiers only)</span></label>
+            <select id="contacts-select" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-slate-200 focus:border-emerald-500 outline-none">
+              <option value="500">500 contacts</option>
+              <option value="5000">5,000 contacts</option>
+              <option value="50000">50,000 contacts</option>
+            </select>
+            <p class="text-[11px] text-slate-500 mt-2">ActiveCampaign is shown at its 1,000-contact Starter tier ($19/mo) — higher lists jump tiers, see its card.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="mt-8 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+        <div>
+          <span class="text-xs text-slate-500 uppercase tracking-wider font-semibold block">Exact-priced tools at this team size</span>
+          <span class="text-3xl font-black text-white font-mono"><span id="exact-total">$0</span><span class="text-base text-slate-400 font-semibold">/mo</span></span>
+          <span id="exact-count" class="text-xs text-slate-400 block mt-1"></span>
+        </div>
+        <p class="text-[11px] text-slate-500 max-w-md leading-relaxed">Sum of tools with an exact published price (seat + flat, USD). Excludes usage-metered tools, contact-tiered tools, AI APIs, Railway's usage range and n8n (EUR) — those are listed below with their own basis, not hidden inside this total.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="pb-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-2xl font-extrabold text-white tracking-tight">Your estimate</h2>
+      <span id="match-count" class="text-xs text-slate-400"></span>
+    </div>
+    <div id="results-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+  </section>
+
+  <!-- Method / honesty -->
+  <section class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-extrabold text-white tracking-tight mb-8">How these numbers are built</h2>
+    <div class="space-y-4">
+      <div class="bg-slate-900/60 rounded-2xl border border-slate-800 p-6">
+        <h3 class="font-bold text-white text-sm">Exact where the price is published</h3>
+        <p class="text-xs text-slate-400 leading-relaxed mt-2">Per-seat tools (Notion, Airtable, Copilot, Cursor, Vercel, Jira, Harvest, Perplexity) are team size × the vendor's published per-user rate. Jira uses the verified Standard tier: $9.70/user/mo for 1–100 users on monthly billing (Atlassian pricing tables, Oct 13, 2026). Above 100 users the per-seat rate is tiered and we do not guess it.</p>
+      </div>
+      <div class="bg-slate-900/60 rounded-2xl border border-slate-800 p-6">
+        <h3 class="font-bold text-white text-sm">Ranges where the vendor meters usage</h3>
+        <p class="text-xs text-slate-400 leading-relaxed mt-2">Stripe, Mixpanel, Firebase and friends bill by volume, not seats. Each card shows the published formula and a worked example at a stated volume, with a link to the full teardown for the complete formula. AI APIs (OpenAI, Claude, DeepSeek, Gemini, Groq) are priced by token volume in our <a href="https://aicost.apexcraftweb.com/" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300">AICost calculator</a>.</p>
+      </div>
+      <div class="bg-slate-900/60 rounded-2xl border border-slate-800 p-6">
+        <h3 class="font-bold text-white text-sm">Annual is the default, monthly is the warning</h3>
+        <p class="text-xs text-slate-400 leading-relaxed mt-2">Most vendors advertise the annual rate. Switch to Monthly to see the real premium — Zapier charges 33% more month-to-month, Airtable $24 vs $20 per seat, Notion $12 vs $10. Jira's annual figure is approximate (about 18% off monthly at the 10-user tier) because Atlassian sells annual in fixed user tiers.</p>
+      </div>
+      <div class="bg-slate-900/60 rounded-2xl border border-slate-800 p-6">
+        <h3 class="font-bold text-white text-sm">Estimates, not quotes</h3>
+        <p class="text-xs text-slate-400 leading-relaxed mt-2">Prices verified against official vendor pricing pages on Nov 25, 2026 and against our own teardowns. Vendors change prices without notice — check the official pricing page before you buy, and <a href="#subscribe" class="text-emerald-400 hover:text-emerald-300">get alerted when a price in this index changes</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kit subscribe -->
+  <section id="subscribe" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+    <div class="max-w-2xl mx-auto bg-gradient-to-b from-slate-900 to-slate-900/40 rounded-3xl border border-slate-800 p-6 sm:p-10 text-center shadow-2xl">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Get alerted when these prices move</h2>
+      <p class="text-slate-400 text-sm mt-3 leading-relaxed">One email a month. Every verified price change across all {tools.length} tools in the index, with before/after numbers and the official source. If nothing changed, the roundup says so.</p>
+      <div class="mt-8">
+        <script async data-uid="e1de121de9" src="https://nomadmatrix.kit.com/e1de121de9/index.js"></script>
+      </div>
+      <p class="text-[11px] text-slate-500 mt-6"><a href="/alerts/" class="text-emerald-400 hover:text-emerald-300">See the price changes we've already caught →</a></p>
+    </div>
+  </section>
+
+  <script define:vars={{ tools, trapOrder }}>
+    const TRAP_BADGE = {
+      'Very High': 'bg-red-500/10 text-red-400 border-red-500/30',
+      'High': 'bg-orange-500/10 text-orange-400 border-orange-500/30',
+      'Medium': 'bg-yellow-500/10 text-yellow-400 border-yellow-500/30',
+      'Low': 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
+      'Very Low': 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
+    };
+
+    const state = { team: 10, billing: 'annual', category: 'all', sort: 'total', contacts: 500 };
+
+    function money(n) {
+      if (n == null) return null;
+      const v = Math.round(n * 100) / 100;
+      return '$' + v.toLocaleString('en-US', { minimumFractionDigits: Number.isInteger(v) ? 0 : 2, maximumFractionDigits: 2 });
+    }
+
+    function estimate(t) {
+      const p = t.pricing;
+      const team = state.team;
+      const annual = state.billing === 'annual';
+      if (p.kind === 'seat') {
+        const free = p.free_seats || 0;
+        const paid = Math.max(0, team - free);
+        if (p.tiered_above && team > p.tiered_above) {
+          return { kind: 'tiered', display: 'Tiered pricing', basis: `Per-seat rate falls with size — $5.80/user/mo at 2,501-5,000 users. See Atlassian's pricing tables.`, perSeat: null, total: null, approx: false };
+        }
+        let rate, approx = false;
+        if (annual) {
+          if (p.seat_annual != null) rate = p.seat_annual;
+          else if (p.annual_factor) { rate = p.seat_monthly * p.annual_factor; approx = true; }
+          else rate = p.seat_monthly;
+        } else {
+          rate = p.seat_monthly;
+        }
+        const total = paid * rate;
+        const basis = free > 0 && team <= free
+          ? `Free tier covers all ${team} seat${team > 1 ? 's' : ''} — $0`
+          : `${paid} paid seat${paid === 1 ? '' : 's'} × ${money(rate)}/user/mo${annual ? ', annual billing' : ', monthly billing'}${free > 0 ? ` (${free} free seat${free > 1 ? 's' : ''} included)` : ''}`;
+        return { kind: 'exact', display: money(total), suffix: '/mo', basis, perSeat: rate, total, approx };
+      }
+      if (p.kind === 'flat') {
+        if (p.range_low != null && p.range_high != null) {
+          const cur = p.currency === 'EUR' ? '€' : '$';
+          return { kind: 'range', display: `${cur}${p.range_low}-${cur}${p.range_high}`, suffix: '/mo + usage', basis: p.currency === 'EUR' ? 'Cloud plan priced in EUR; self-hosted is $0.' : 'Plan price before usage.', perSeat: p.range_low / team, total: null, approx: false };
+        }
+        const cur = p.currency === 'EUR' ? '€' : '$';
+        const val = p.monthly;
+        return { kind: 'exact', display: `${cur}${val}`, suffix: '/mo', basis: `Flat monthly price${p.from_price ? ' (from)' : ''}, regardless of team size.`, perSeat: val / team, total: p.currency === 'EUR' ? null : val, approx: false };
+      }
+      if (p.kind === 'contact') {
+        if (t.id === 'mailchimp') {
+          const tier = p.tiers.find(x => x.contacts === state.contacts);
+          return { kind: 'exact', display: money(tier.price), suffix: '/mo', basis: `${p.plan} plan at ${state.contacts.toLocaleString()} contacts, monthly billing.`, perSeat: null, total: tier.price, approx: false };
+        }
+        const tier = p.tiers[0];
+        return { kind: 'exact', display: money(tier.price), suffix: '/mo', basis: `${p.plan} plan at ${tier.contacts.toLocaleString()} contacts, monthly billing.`, perSeat: null, total: tier.price, approx: false };
+      }
+      if (p.kind === 'usage') {
+        if (p.base_monthly != null) {
+          const val = annual ? p.base_monthly : (p.base_monthly_monthly || p.base_monthly);
+          return { kind: 'usage-base', display: money(val), suffix: '/mo', basis: `${p.formula}${annual ? '' : ' — monthly billing rate shown.'} ${p.example}`, perSeat: null, total: val, approx: false };
+        }
+        return { kind: 'usage-formula', display: 'By volume', suffix: '', basis: `${p.formula} ${p.example}`, perSeat: null, total: null, approx: false };
+      }
+      // aicost
+      return { kind: 'aicost', display: 'By tokens', suffix: '', basis: 'Usage-based per 1M tokens — price it by your volume.', perSeat: null, total: null, approx: false };
+    }
+
+    function card(t) {
+      const e = estimate(t);
+      const badge = TRAP_BADGE[t.trap] || TRAP_BADGE['Low'];
+      const cta = e.kind === 'aicost'
+        ? `<a href="https://aicost.apexcraftweb.com/" target="_blank" rel="noopener noreferrer" class="flex-1 text-center px-3 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black text-xs font-bold transition">Price it in AICost →</a>`
+        : `<a href="${t.affiliate_url}" target="_blank" rel="noopener noreferrer" class="flex-1 text-center px-3 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black text-xs font-bold transition">See official pricing ↗</a>`;
+      return `
+      <article class="bg-slate-900/60 rounded-2xl border border-slate-800 hover:border-emerald-500/50 p-6 transition flex flex-col justify-between">
+        <div>
+          <div class="flex items-start justify-between mb-2">
+            <div>
+              <h3 class="font-bold text-lg text-white">${t.name}</h3>
+              <span class="text-xs text-slate-500">${t.category_name}</span>
+            </div>
+            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${badge} whitespace-nowrap">${t.trap} Risk</span>
+          </div>
+          <div class="mt-4 mb-1">
+            <span class="text-3xl font-black text-white font-mono">${e.display}</span>${e.suffix ? `<span class="text-sm text-slate-400 font-semibold">${e.suffix}</span>` : ''}${e.approx ? '<span class="text-[10px] text-yellow-400 font-bold ml-2">≈ approx.</span>' : ''}
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">${e.basis}</p>
+          <p class="text-xs text-slate-400 leading-relaxed mt-3"><span class="text-slate-500 font-semibold">Pricing note: </span>${t.pricing.note}</p>
+          <p class="text-[11px] text-slate-400 leading-relaxed mt-3 italic"><span class="text-red-400/90 not-italic font-bold">⚠️ Top hidden cost: </span>"${t.hidden_cost}"</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-800/80 flex gap-2">
+          ${cta}
+          <a href="/tool/${t.id}" class="px-3 py-2.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-emerald-500/60 text-slate-200 text-xs font-bold transition whitespace-nowrap">Teardown →</a>
+        </div>
+        <a href="#subscribe" class="mt-3 text-center text-[11px] text-emerald-400 hover:text-emerald-300 font-semibold">🔔 Notify me when ${t.name} changes price</a>
+      </article>`;
+    }
+
+    function render() {
+      const filtered = tools.filter(t => state.category === 'all' || t.category === state.category);
+      const withEst = filtered.map(t => ({ t, e: estimate(t) }));
+      withEst.sort((a, b) => {
+        if (state.sort === 'trap') return (trapOrder[b.t.trap] || 0) - (trapOrder[a.t.trap] || 0);
+        if (state.sort === 'perseat') {
+          const av = a.e.perSeat, bv = b.e.perSeat;
+          if (av == null && bv == null) return 0;
+          if (av == null) return 1;
+          if (bv == null) return -1;
+          return av - bv;
+        }
+        const av = a.e.total, bv = b.e.total;
+        if (av == null && bv == null) return 0;
+        if (av == null) return 1;
+        if (bv == null) return -1;
+        return av - bv;
+      });
+      document.getElementById('results-grid').innerHTML = withEst.map(x => card(x.t)).join('');
+      document.getElementById('match-count').innerText = `${withEst.length} tool${withEst.length === 1 ? '' : 's'} shown`;
+
+      // Exact total: USD seat + flat single-value + contact + usage-base, excluding EUR and ranges
+      let total = 0, count = 0;
+      withEst.forEach(({ t, e }) => {
+        if (e.total != null && t.pricing.currency !== 'EUR' && e.kind !== 'range') { total += e.total; count++; }
+      });
+      document.getElementById('exact-total').innerText = money(total);
+      document.getElementById('exact-count').innerText = `${count} tools with exact published prices in this view (team of ${state.team}, ${state.billing} billing).`;
+      document.getElementById('team-display').innerText = state.team === 1 ? '1 person' : `${state.team} people`;
+    }
+
+    function init() {
+      const params = new URLSearchParams(window.location.search);
+      const cat = params.get('category');
+      if (cat && tools.some(t => t.category === cat)) {
+        state.category = cat;
+        document.getElementById('category-select').value = cat;
+      }
+      const team = parseInt(params.get('team') || '', 10);
+      if (team >= 1 && team <= 50) {
+        state.team = team;
+        document.getElementById('team-slider').value = String(team);
+      }
+
+      document.getElementById('team-slider').addEventListener('input', ev => {
+        state.team = parseInt(ev.target.value, 10);
+        render();
+      });
+      document.querySelectorAll('.team-preset').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.team = parseInt(btn.dataset.team, 10);
+          document.getElementById('team-slider').value = String(state.team);
+          render();
+        });
+      });
+      const annualBtn = document.getElementById('billing-annual');
+      const monthlyBtn = document.getElementById('billing-monthly');
+      function setBilling(mode) {
+        state.billing = mode;
+        const on = 'billing-btn px-5 py-2.5 text-xs font-bold bg-emerald-500 text-black';
+        const off = 'billing-btn px-5 py-2.5 text-xs font-bold bg-slate-900 text-slate-300';
+        annualBtn.className = mode === 'annual' ? on : off;
+        monthlyBtn.className = mode === 'monthly' ? on : off;
+        document.getElementById('billing-note').innerText = mode === 'annual'
+          ? 'Annual prices shown where the vendor publishes them.'
+          : 'Monthly billing — note the premium vs annual (Zapier +33%, Airtable +$4/seat, Notion +$2/seat).';
+        render();
+      }
+      annualBtn.addEventListener('click', () => setBilling('annual'));
+      monthlyBtn.addEventListener('click', () => setBilling('monthly'));
+      document.getElementById('category-select').addEventListener('change', ev => {
+        state.category = ev.target.value;
+        render();
+      });
+      document.getElementById('sort-select').addEventListener('change', ev => {
+        state.sort = ev.target.value;
+        render();
+      });
+      document.getElementById('contacts-select').addEventListener('change', ev => {
+        state.contacts = parseInt(ev.target.value, 10);
+        render();
+      });
+      render();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  </script>
+</Layout>

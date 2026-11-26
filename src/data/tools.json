@@ -1144,5 +1144,153 @@
     ],
     "cost_trap_rating": "High",
     "affiliate_url": "https://www.atlassian.com/software/jira"
+  },
+  {
+    "id": "betterstack",
+    "name": "Better Stack",
+    "category": "analytics-monitoring",
+    "category_name": "Analytics & Product Intelligence",
+    "headline": "Free uptime monitoring for 10 endpoints, then $29 per responder a month — but telemetry is a second, region-priced meter that can dwarf the license",
+    "starting_price": "$0 Free | $29/responder/mo (annual billing, $34 monthly)",
+    "pricing_model": "Per-responder license + per-GB telemetry (region-dependent)",
+    "free_tier": "10 monitors & heartbeats, 1 status page, Slack & email alerts, 3 GB logs/traces (3-day retention), 30 GB metrics",
+    "base_cost_monthly": 29,
+    "hidden_costs": [
+      "The responder license is the real entry price: $29/mo per responder on annual billing ($34 monthly). Read-only teammates are free, but anyone who gets paged needs a license — and phone/SMS alerts are paid-only. The free plan checks every 3 minutes and alerts via Slack/email only; paid checks run every 30 seconds.",
+      "Telemetry is a second meter priced by region: logs and traces cost $0.10/GB ingested in the EU, $0.15 in the US and $0.35 in Singapore, plus retention per GB-month — the same log volume costs 3.5x more in Singapore than in Europe. The Nano bundle (40 GB each of logs, traces and metrics) is $25/mo annual in the EU but $38 in the US.",
+      "Add-ons stack per line: 50 extra monitors $21/mo annual, Slack/Teams incident workflows $9 per responder/mo, an extra public status page $12/mo, white-label status page $208/mo, audit logs $208/mo — a small team with on-call plus Slack workflows is past $50/mo before a single gigabyte of telemetry.",
+      "Pay-as-you-go telemetry is uncapped unless you set a spending limit in billing settings — ingest production logs without one and the meter runs open."
+    ],
+    "pros": [
+      "Free plan is a working stack, not a trial: 10 monitors, a status page and 3 GB of logs/traces",
+      "Read-only team members are free — you only pay for the people who get paged",
+      "Uptime, on-call, logs, traces, metrics and status pages on one bill, with a 60-day money-back guarantee",
+      "Every price is published, including per-GB regional rates and bundle prices"
+    ],
+    "cons": [
+      "Free checks run every 3 minutes and alert only via Slack/email — no phone or SMS",
+      "Telemetry pricing varies 3.5x by region (EU vs Singapore), easy to mis-budget",
+      "Slack/Teams incident workflows cost $9 per responder/mo on top of the license",
+      "No self-hosted option; custom data residency is an Enterprise discussion"
+    ],
+    "best_for": "Small teams that want uptime monitoring, on-call paging and logs on one bill without paying per seat for viewers",
+    "top_alternatives": [
+      "posthog",
+      "mixpanel"
+    ],
+    "cost_trap_rating": "Medium",
+    "affiliate_url": "https://betterstack.com/?ref=b-k5pw"
+  },
+  {
+    "id": "cloudways",
+    "name": "Cloudways",
+    "category": "hosting-deployment",
+    "category_name": "Hosting & Edge Deployment",
+    "headline": "Managed cloud hosting from $14/mo — but the server price is the floor: backup, CDN overage and extra disk all bill per GB on top",
+    "starting_price": "$14/mo Micro (1GB RAM, 1 vCPU) | Flexible plans from $20/mo",
+    "pricing_model": "Per-server hourly/monthly, pay-as-you-go, no lock-in",
+    "free_tier": "3-day free trial, no credit card required (DigitalOcean/Vultr/Linode only; trial server is deleted if you don't add a payment method)",
+    "base_cost_monthly": 14,
+    "hidden_costs": [
+      "The $14 Micro is 1 GB RAM, 1 vCPU, 25 GB NVMe and 1 TB transfer — fine for a small blog, but a WooCommerce store wants Small $28/mo or Medium $54/mo, and the new Flexible plans start higher at $20/mo (Starter, 2 GB RAM, 5 apps).",
+      "Overages bill per GB on top of the plan: offsite backup storage $0.033/GB, CDN bandwidth beyond allocation $0.02/GB, extra disk $1 per 10 GB — and Autonomous plans add disk at $1/GB, bandwidth at $0.04/GB and autoscaling at $0.07-0.12/hr per server beyond baseline.",
+      "You pay the cloud provider's rate plus Cloudways' markup: the same DigitalOcean droplet costs more through Cloudways than direct — the premium buys the managed panel, staging and 24/7 support, not cheaper compute.",
+      "Billing is hourly ($0.0208/hr for Micro), so a server left running bills every hour of the month, and there is no annual discount — monthly is the only term. Upgrade or downgrade anytime with no lock-in."
+    ],
+    "pros": [
+      "Managed panel with staging, free SSL, automated backups and 24/7 expert support on every plan",
+      "Pick your cloud — DigitalOcean, Vultr, Linode, AWS or Google Cloud — across 30+ locations",
+      "Unlimited apps and websites per server, no per-site fee",
+      "Hourly billing with no lock-in: scale up or down whenever traffic changes"
+    ],
+    "cons": [
+      "No annual billing discount — the monthly rate is the rate",
+      "The same compute costs more than buying the underlying droplet direct",
+      "The 1 GB Micro tier is too small for anything beyond a light site",
+      "Backup, CDN overage and extra disk are per-GB meters on top of the server price"
+    ],
+    "best_for": "Agencies and WordPress/WooCommerce owners who want managed cloud hosting without running their own sysadmin",
+    "top_alternatives": [
+      "digitalocean",
+      "render"
+    ],
+    "cost_trap_rating": "Medium",
+    "affiliate_url": "https://www.cloudways.com"
+  },
+  {
+    "id": "beehiiv",
+    "name": "beehiiv",
+    "category": "email-marketing",
+    "category_name": "Email & Transactional",
+    "headline": "Free up to 2,500 subscribers with unlimited sends — but the $49 sticker is only the 1,000-subscriber tier, and the bill climbs in steps as your list grows",
+    "starting_price": "$49/mo Lite (1,000 subscribers, annual billing; $59 month-to-month)",
+    "pricing_model": "Per-subscriber tiered, unlimited sends on every plan",
+    "free_tier": "$0 up to 2,500 subscribers, unlimited sends, 1 publication, 1 seat, 30-day analytics; no paid subscriptions, automations or A/B testing",
+    "base_cost_monthly": 49,
+    "hidden_costs": [
+      "The $49 sticker is the smallest tier only: Lite is $49/mo annual ($59 monthly) at 1,000 subscribers, then $69 at 2,500, $95 at 5,000 and $119 at 10,000 — at 100,000 subscribers it is $399/mo annual ($469 monthly). Pro runs $95/mo annual at 1,000 subscribers to $599 at 100,000 and $869 at its 250,000 ceiling — all verified 2026-11-26 on beehiiv.com/pricing",
+      "Crossing a subscriber threshold reprices the whole plan: there is no per-subscriber meter, so growing from 1,000 to 1,001 subscribers jumps Lite from $49 to $69/mo annual — budget for the next tier, not the current one",
+      "Free covers more subscribers than the paid entry tier: Free goes up to 2,500 subscribers, but Lite's $49/mo annual price is the 1,000-subscriber tier — a 2,000-subscriber list that wants automations or paid subscriptions pays the 2,500 tier at $69/mo annual ($79 monthly), not $49",
+      "Branding removal is Pro-only: the beehiiv badge stays on Free and Lite; removing it means Pro at $95/mo annual ($109 monthly) at 1,000 subscribers, nearly 2x Lite",
+      "beehiiv takes 0% of paid subscriptions, but Stripe still takes its cut: 2.9% + $0.30 per transaction on every paid subscription or product sale (pricing page FAQ)",
+      "Prices moved recently and can move again: plans were renamed in October 2026 (Launch to Free, Scale to Lite, Max to Pro) and Lite's monthly price rose $10-30 per tier at the same time — check the live page before you buy, and annual billing prepays the year at your signing tier"
+    ],
+    "pros": [
+      "Free plan is genuinely usable: 2,500 subscribers and unlimited sends, no credit card required",
+      "Unlimited sends on every plan — you are never penalized for emailing more often or mailing the full list",
+      "0% take rate on paid subscriptions and digital products; website, podcast, community and products included on every plan",
+      "Every price is published by subscriber tier, monthly and annual, on the pricing page"
+    ],
+    "cons": [
+      "No per-subscriber pricing: the bill jumps in steps at each subscriber threshold",
+      "Branding removal, webhooks, dynamic content and 24/7 priority support all need Pro",
+      "Free plan analytics look back only 30 days; Lite 12 months",
+      "Annual billing saves up to 20% but prepays the full year upfront"
+    ],
+    "best_for": "Newsletter-first creators who want unlimited sends and 0% revenue share and can live with step-priced tiers",
+    "top_alternatives": [
+      "mailchimp",
+      "mailerlite"
+    ],
+    "cost_trap_rating": "Medium",
+    "affiliate_url": "https://www.beehiiv.com"
+  },
+  {
+    "id": "mailerlite",
+    "name": "MailerLite",
+    "category": "email-marketing",
+    "category_name": "Email & Transactional",
+    "headline": "Comfort from $12/mo with every feature on every paid plan — but the bill is a subscriber ladder, and crossing a limit auto-upgrades you",
+    "starting_price": "$12/mo Comfort (500 subscribers, monthly billing; $10.80 annual)",
+    "pricing_model": "Per-subscriber tiered + send-volume cap on Comfort",
+    "free_tier": "$0 up to 250 subscribers, 2,500 emails/mo, 2 seats, 3 automations (5 steps each), 1 website + 1 landing page; MailerLite logo stays on",
+    "base_cost_monthly": 12,
+    "hidden_costs": [
+      "Tiers jump in steps: Comfort is $12/mo at 500 subscribers, $19 at 1,000, $33 at 2,500, $49 at 5,000 and $89 at 10,000; Power is $25 at 500, $39 at 1,000, $69 at 5,000 and $129 at 10,000 — all verified 2026-11-26 on mailerlite.com/pricing",
+      "Overages auto-upgrade you: on a paid plan, going over your subscriber limit automatically moves you to the next pricing tier and charges your payment method at a prorated rate; the same happens if you pass Comfort's send cap — the bill moves without your confirmation (pricing page FAQ)",
+      "Comfort's send cap is 10x your subscriber tier, not your list: at the 1,000-subscriber tier you get 10,000 emails a month whether you have 600 or 900 subscribers — a weekly newsletter to 1,000 people is about 4,000 emails, inside the cap, but daily sending to the same list is not",
+      "Free is much smaller than it used to be: on 2026-06-16 MailerLite cut Free from 500 subscribers and 12,000 emails/mo to 250 subscribers and 2,500 emails/mo — a list that fit Free in May now pays $12/mo",
+      "The Free plan pauses instead of billing: over 250 subscribers or 2,500 emails in a month, sending (campaigns and automations) and new imports pause until you are back under the limit or upgrade — nothing is deleted, but nothing sends either",
+      "Power is the unlimited-sends tier, not a feature tier: every paid plan gets the full feature set; what Power adds over Comfort is unlimited sending (fair use, up to 200,000 subscribers), unlimited seats and automations, multiple automation triggers and 24/7 live chat — at 500 subscribers that is $25/mo vs $12"
+    ],
+    "pros": [
+      "Cheapest honest entry in the category: full feature set from $12/mo, and every paid plan gets the same tools — you pay for list size, not features",
+      "Only active subscribers count toward billing; unsubscribed and bounced contacts are not billed",
+      "Annual billing is a flat 10% off, and nonprofits get 30% off any paid plan",
+      "14-day free trial of paid features with no credit card, then you drop to Free automatically if you do nothing"
+    ],
+    "cons": [
+      "Free plan is small: 250 subscribers and 2,500 emails/mo, with the MailerLite logo on everything",
+      "Comfort's 10x send cap punishes frequent senders — daily mailers outgrow it fast",
+      "Auto-tier-upgrade means a viral signup spike can raise your bill the same month",
+      "No phone support; live chat is Power-only, Comfort gets email support"
+    ],
+    "best_for": "Small teams and creators under 10,000 subscribers who want the full toolset at the lowest entry price and can watch the auto-upgrade rule",
+    "top_alternatives": [
+      "mailchimp",
+      "beehiiv"
+    ],
+    "cost_trap_rating": "Medium",
+    "affiliate_url": "https://www.mailerlite.com"
   }
 ]
